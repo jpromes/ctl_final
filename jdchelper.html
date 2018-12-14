@@ -1,0 +1,1421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<HEAD>
+	<title>Untitled QnA</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content=""/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="apple-touch-icon" href="https://www.qnamarkup.org/images/QnA_300.png"/>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" BACKGROUND="" MARGINWIDTH="0" MARGINHEIGHT="0" onLoad="startAT('1');"><style>	
+
+	body {
+
+		font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+
+	}
+
+
+
+	#rawmarkup{
+
+		display:none;
+
+	}
+
+	
+
+	#QandA img{
+
+		width:100%;
+
+	}
+
+
+
+	div.main{
+
+		min-width:300px;
+
+		max-width:650px;
+
+		margin: 0 auto;
+
+	padding:0 5px 0 5px;
+
+		}
+
+	div.frame{
+
+		float:left;
+
+		width:100%;
+
+		margin:5px 0 5px 0;
+
+	}
+
+	div.full{
+
+		float:left;
+
+		width:100%;
+
+	}
+
+	.button{
+
+		padding:8px;
+
+		margin:8px 0 0px 0;
+
+		width:100%;
+
+	}
+
+	div.question_text{
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		color:#ffffff;
+
+		min-width:30px;
+
+		background:#5489eb;
+
+		border-radius: 15px;
+
+		padding:10px 15px 14px 15px;
+
+		margin-right:45px;
+
+	}
+
+
+
+	div.question_text a:link, div.question_text a:hover, div.question_text a:active, div.question_text a:visited{ color:#e3fbfc; } 
+
+
+
+	div.question_arrow{
+
+		float:left; 
+
+		width: 0; 
+
+		height: 0; 
+
+		border-left: 5px solid transparent; 
+
+		border-right: 10px solid transparent; 
+
+		border-top: 15px solid #5489eb;
+
+		margin:0 20px;
+
+	}
+
+	div.ans_text{
+
+		float:right;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		color:#000000;
+
+		min-width:30px;
+
+		background:#eeeeee;
+
+		border-radius: 15px;
+
+		padding:10px 15px 14px 15px;
+
+		margin-left:45px;
+
+	}
+
+	div.ans_arrow{
+
+		float:right; 
+
+		width: 0; 
+
+		height: 0; 
+
+		border-left: 10px solid transparent; 
+
+		border-right: 5px solid transparent; 
+
+		border-top: 15px solid #eeeeee;
+
+		margin:0 20px;
+
+	}
+
+	div.choices{
+
+		float:left;
+
+		width:100%;
+
+		margin:15px 0 0 0;
+
+	}
+
+	div.standard_buttons{
+
+		float:left;
+
+		width:100%;
+
+		margin-top:5px;
+
+		border-top: 1px solid #ddd; 
+
+		padding-top:12px;		
+
+	}
+
+	div.credits{
+
+		float:left;
+
+		dispaly:none;
+
+		width:100%;
+
+		background:#eee;
+
+		margin:0px 0 15px 0;
+
+	}
+
+	div.credit_text{
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		padding:4px 15px 10px 15px;
+
+	}
+
+	li.error{
+
+		list-style-type: none;
+
+		background:#ffdddd;
+
+		margin: 10px 0 0 0;
+
+		padding: 5px;
+
+	}
+
+
+
+	.qpad {
+
+		float:left;
+
+		padding:0 15px;
+
+	}
+
+	
+
+	a.sbutton {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:48%;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 3px 0;
+
+		border: solid 1px #888;
+
+		text-align:center;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.sbutton:hover, a.sbutton:active {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:48%;
+
+		background: #ddd;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 3px 0;
+
+		border: solid 1px #888;
+
+		text-align:center;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.qabutton {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:100%;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 8px 0;
+
+		border: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.qabutton:hover, a.qabutton:active {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:100%;
+
+		background: #ddd;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 8px 0;
+
+		border: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+
+
+	div.xdiv {
+
+		float:left;
+
+		width:100%;
+
+		margin: 0 0 8px 0;
+
+		background: #eee;
+
+		border: solid 1px #888;
+
+		border-radius: 8px;
+
+	}	
+
+
+
+	input.xinput {
+
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+
+		-moz-box-sizing: border-box;    /* Firefox, other Gecko */ 
+
+		box-sizing: border-box;         /* Opera/IE 8+ */
+
+		float:left;
+
+		width:100%;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		background: #fff;
+
+		border-top-left-radius: 8px;
+
+		border-top-right-radius: 8px;
+
+		padding:10px 10px 12px 10px;
+
+		border: solid 0px #888;
+
+		border-bottom: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+	a.xbutton {
+
+		float:left;
+
+		width:100%;
+
+		text-align:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0px;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+	a.xbutton:hover, a.xbutton:active {
+
+		border-top-left-radius: 0px;
+
+		border-top-right-radius: 0px;
+
+		background: #ddd;
+
+	}
+
+</style>
+<FORM name="FORM" id="FORM"><div id="conversation" style="margin:15px auto 0 auto;padding:0 15px;max-width:500px"><div id='QandA' class='QandA'><div style='padding:15px;background:#ddffdd;text-align:center;'>Loading QnA...</div></div><div id='Choices' class='choices'></div><div id="rawmarkup" style="display:none;">Q%28start%29%3AWelcome+to+the+Suffolk+JDC+Helper%21+What+do+you+need+help+with%3F%0D%0AA%3AImportant+documents%0D%0A%09Q%281.1%29%3AGOTO%3Adocs%0D%0AA%3ADuty+day+overview%0D%0A%09Q%281.2%29%3AGOTO%3Aduty%0D%0AA%3ARelevant+statutes%0D%0A%09Q%281.3%29%3AGOTO%3Astatute%0D%0AA%3ARelevant+case+law%0D%0A%09Q%281.4%29%3AGOTO%3Acase%0D%0AA%3AModel+jury+instructions+for+common+crimes%0D%0A%09Q%281.5%29%3AGOTO%3Ajury%0D%0AA%3AImportant+contacts%0D%0A%09Q%281.6%29%3AGOTO%3Acontact%0D%0A%0D%0AQ%28duty%29%3AOnce+you+get+to+the+courtroom+make+sure+the+clerk+knows+you+are+on+duty+if+they+don%27t+know+yet.%0D%0AA%3AOk%2C+clerk+knows+I%27m+on+duty.+Now+what%3F%0D%0A%09Q%282.1%29%3AIf+there+is+a+new+arrest+your+supervisor+should+check+the+police+report+to+make+sure+it+is+a+case+you+can+take.%0D%0A%09A%3AWe+can+take+the+case+and+now+I+have+the+police+report%21+Now+what%3F%0D%0A%09%09Q%282.1.1%29%3ARead+over+the+police+report.+Read+over+the+charges+and+check+for+probable+cause.%0D%0A%09%09A%3ATake+me+to+model+jury+instructions+for+the+elements+of+a+crime.%0D%0A%09%09%09Q%282.1.1.1%29%3AGOTO%3Ajury%0D%0A%09%09A%3AI%27ve+reviewed+the+police+report.+Now+what%3F%0D%0A%09%09%09Q%282.1.1.2%29%3AGo+to+probation+and+ask+to+see+if+your+client+has+an+existing+CORI%2FCARI%0D%0A%09%09%09A%3AOk%2C+now+what%3F%0D%0A%09%09%09%09Q%282.1.1.2.1%29%3ATalk+to+the+ADA+and+get+as+much+information+as+possible+on+what+they+intend+to+do.%0D%0A%09%09%09%09A%3AADA+wants+to+divert+the+case%0D%0A%09%09%09%09%09Q%282.1.1.2.1.1%29%3AWhat+kind+of+diversion+program+do+they+want.+Make+sure+you+have+enough+information+to+give+to+your+client+to+make+sure+they+are+willing+to+complete+the+program.%0D%0A%09%09%09%09%09A%3AI+will+let+my+client+know%21%0D%0A%09%09%09%09%09%09Q%282.1.1.2.1.1.1%29%3AGOTO%3Astart%0D%0A%09%09%09%09A%3AADA+will+request+bail%0D%0A%09%09%09%09%09Q%282.1.1.2.1.2%29%3ATry+to+get+more+information+about+why+they+are+requesting+bail+and+how+much+they+are+requesting.+%0D%0A%09%09%09%09%09A%3AOk%2C+I+talked+to+the+ADA+about+bail%2C+now+what%3F%0D%0A%09%09%09%09%09%09Q%282.1.1.2.1.2.1%29%3AIf+you+haven%27t+checked+with+probation+of+previous+default%2C+do+it+now%21+Check+with+your+client+as+well.+If+there+was+a+default%2C+was+there+a+reason+for+it%3F%0D%0A%09%09%09%09%09%09A%3AOk%2C+I+checked+on+defaults+and+spoke+with+my+client.+Now+what%3F%0D%0A%09%09%09%09%09%09%09Q%282.1.1.2.1.2.1.1%29%3APrepare+a+bail+argument%21+Why+is+your+client+likely+to+come+back+to+court%3F+Try+your+best%21%0D%0A%09%09%09%09%09%09%09A%3AGot+it%21+%0D%0A%09%09%09%09%09%09%09%09Q%282.1.1.2.1.2.1.1.1%29%3AGOTO%3Astart%0D%0A%09%09%09%09A%3AADA+will+request+conditions+for+release%0D%0A%09%09%09%09%09Q%282.1.1.2.1.3%29%3AMake+sure+these+conditions+have+some+connection+to+what+led+to+the+arrest.+Negotiate+with+the+ADA%21+%0D%0A%09%09%09%09%09A%3AWhat+else+should+I+make+note+of%3F%0D%0A%09%09%09%09%09%09Q%282.1.1.2.1.3.1%29%3AMake+sure+you+speak+to+your+client.+Are+these+conditions+doable%3F+Don%27t+set+your+client+up+for+failure.+%0D%0A%09%09%09%09%09%09A%3AGot+it%21%0D%0A%09%09%09%09%09%09%09Q%282.1.1.2.1.3.1.1%29%3AGOTO%3Astart%0D%0A%0D%0A%0D%0AQ%28docs%29%3ABelow+you+can+find+several+important+documents%0D%0AA%3AJDC+Documents%0D%0A%09Q%283.1%29%3ABelow+you+can+find+several+important+documents%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes.github.io%2Fctl_final%2FNotice_of_Appearance_and_Disclosure_Vanessa.pdf%5DSJC+Rule+3%3A03+Disclosure+%26+Notice+of+Appearance%0D%0A%09%09Q%283.1.1%29%3AGOTO%3Astart%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes.github.io%2Fctl_final%2FAuthorization_for_representation.pdf%5DAuthorization+for+Representation%0D%0A%09%09Q%283.1.2%29%3AGOTO%3Astart%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes%2Fctl_final%2FHIPAA_form.pdf%5DAuthorization+to+Disclose+Protected+Health+and+Other+Information+%28HIPAA%29%0D%0A%09%09Q%283.1.3%29%3AGOTO%3Astart%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes%2Fctl_final%2FYAD_Summary_Crime_Bill.pdf%5DYAD+Summary+of+2018+Crime+Bill%0D%0A%09%09Q%283.1.4%29%3AGOTO%3Astart%09%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes%2Fctl_final%2FPolicies_Procedures.pdf%5DJDC+Information%2C+Policies+%26+Procedure+%0D%0A%09%09Q%283.1.5%29%3AGOTO%3Astart%0D%0AA%3ACourt+Forms%0D%0A%09Q%283.2%29%3ABelow+you+can+find+several+court+forms+you+might+need%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes%2Fctl_final%2FBlank_Motion.pdf%5DBlank+Motion%0D%0A%09%09Q%283.2.1%29%3AGOTO%3Astart%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes%2Fctl_final%2FPretrial_Conference_Report.pdf%5DPretrial+Conference+Report%0D%0A%09%09Q%283.2.2%29%3AGOTO%3Astart%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes%2Fctl_final%2FTender_of_Plea_Waiver_of_Rights.pdf%5DTender+of+Plea+or+Admission+%26+Waiver+of+Rights%0D%0A%09%09Q%283.2.3%29%3AGOTO%3Astart%0D%0AA%3AClinic-wide+Documents+%09%0D%0A%09Q%283.3%29%3ABelow+you+can+find+several+important+clinic-wide+documents%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes%2Fctl_final%2Fblob%2Fmaster%2FClinic_Handbook.pdf%5DClinical+Programs+Student+Handbook%0D%0A%09%09Q%283.3.1%29%3AGOTO%3Astart%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes.github.io%2Fctl_final%2FPolicies_Conflicts_Interest.pdf%5DPolicies+%26+Procedures+Concerning+Conflicts+of+Interest%0D%0A%09%09Q%283.3.2%29%3AGOTO%3Astart%0D%0A%09A%3A%5Bhttps%3A%2F%2Fjpromes%2Fctl_final%2Fblob%2Fmaster%2FSecurity_Policies.pdf%5DPolicies+Regarding+Document+Security+and+Use+of+Technology%0D%0A%09%09Q%283.3.3%29%3AGOTO%3Astart%0D%0A%0D%0A%0D%0AQ%28statute%29%3ABelow+you+can+find+a+link+to+relevant+statutes%0D%0AA%3A%5Bhttps%3A%2F%2Fmalegislature.gov%2FLaws%2FGeneralLaws%2FPartIV%2FTitleII%2FChapter276%2FSection58%5DBail+c.276+%C2%A758%0D%0A%09Q%284.1%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fmalegislature.gov%2FLaws%2FGeneralLaws%2FPartIV%2FTitleII%2FChapter276%2FSection58B%5DRevocation+of+bail+c.276+%C2%A758B%0D%0A%09Q%284.2%29%3AGOTO%3Astart%0D%0A%0D%0A%0D%0AQ%28jury%29%3AHere+you+can+find+the+link+to+the+model+jury+instructions+for+common+cases.%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F10%2Fvc%2F7160-disorderly-conduct.pdf%5DDisorderly+conduct%0D%0A%09Q%285.1%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Ftx%2F7460-resisting-arrest.pdf%5DResisting+arrest%0D%0A%09Q%285.2%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fwp%2F7600-carrying-a-firearm.pdf%5DCarrying+a+firearm%0D%0A%09Q%285.3%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fnh%2F7620-possession-of-a-firearm.pdf%5DPossession+fo+a+firearm%0D%0A%09Q%285.4%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fnj%2F7800-distribution-of-a-controlled-substance.pdf%5DDistribution+of+a+controlled+substance%3B+Possession+with+intent+to+distribute%0D%0A%09Q%285.5%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fvy%2F7820-possession-of-a-controlled-substance.pdf%5DPossession+of+a+controlled+substance%0D%0A%09Q%285.6%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fqx%2F8100-breaking-and-entering.pdf%5DBreaking+and+entering+%0D%0A%09Q%285.7%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fvh%2F8180-possession-of-burglarious-tools.pdf%5DPossession+of+burglarious+tools%0D%0A%09Q%285.8%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fvh%2F8220-trespass.pdf%5DTrespass%0D%0A%09Q%285.9%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2For%2F8250-vandalism.pdf%5DVandalism%0D%0A%09Q%285.10%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fpp%2F8260-wanton-destruction-of-property.pdf%5DWonton+destruction+of+property%0D%0A%09Q%285.11%29%3AGOTO%3Astart%0D%0AA%5Bhttps%3A%2F%2Fwww.mass.gov%2Ffiles%2Fdocuments%2F2016%2F08%2Fwo%2F8280-wilful-and-malicious-destruction-of-property.pdf%5D%3AWilful+and+malicious+destruction+of+property%0D%0A%09Q%285.12%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttps%3A%2F%2Fwww.mass.gov%2Flists%2Fcriminal-model-jury-instructions-for-use-in-the-district-court%5DAdditional+Model+Jury+Instructions%0D%0A%09Q%285.13%29%3AGOTO%3Astart%0D%0A%0D%0A%0D%0AQ%28case%29%3AHere+you+can+find+the+link+to+some+relevant+cases%0D%0AA%3A%5Bhttp%3A%2F%2Fmasscases.com%2Fcases%2Fsjc%2F477%2F477mass691.html%5DBrangan+v.+Commonwealth%2C+478+Mass.+361%0D%0A%09Q%286.1%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttp%3A%2F%2Fmasscases.com%2Fcases%2Fsjc%2F445%2F445mass315.html%5DCommonwealth+v.+Pagan%2C+445+Mass.+315%0D%0A%09Q%286.2%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttp%3A%2F%2Fmasscases.com%2Fcases%2Fsjc%2F415%2F415mass490.html%5DDelaney+v.+Commonwealth%2C+415+Mass.+490%0D%0A%09Q%286.3%29%3AGOTO%3Astart%0D%0AA%3A%5Bhttp%3A%2F%2Fmasscases.com%2Fcases%2Fsjc%2F440%2F440mass121.html%5DPaquette+v.+Commonwealth%2C+440+Mass.+121%0D%0A%09Q%286.4%29%3AGOTO%3Astart%0D%0A%0D%0A%0D%0AQ%28contact%29%3AHere+you+can+find+contacts+and+information+you+might+find+helpful%21+%0D%0AA%3ABoston+Juvenile+Court%0D%0A%09Q%287.1%29%3AWhose+contact+do+you+need%3F%0D%0A%09A%3AClerk%09%09%0D%0A%09%09Q%287.1.1%29%3APhone+number%3A+%28617%29+788-8525%0D%0A%09A%3AProbation%0D%0A%09%09Q%287.1.2%29%3APhone+number%3A+%28617%29+788-8571%0D%0A%09A%3ACourt+clinic%0D%0A%09%09Q%287.1.3%29%3APhone+number%3A+%28617%29+788-8975%0D%0AA%3AADA%27s+Office%0D%0A%09Q%287.2%29%3AWhose+contact+do+you+need%3F%0D%0A%09A%3ALeah+Potash%0D%0A%09%09Q%287.2.1%29%3APhone+number%3A+%28617%29+619-4135%3Cbr%3EEmail%3A+leah.potash%40state.ma.us%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.2.1.1%29%3AGOTO%3Astart%0D%0A%09A%3ABrett+Walker%0D%0A%09%09Q%287.2.2%29%3APhone+number%3A+%28617%29+619-4234%3Cbr%3Ebrett.walker%40massmail.state.ma.us%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.2.2.1%29%3AGOTO%3Astart%0D%0A%09A%3AMichelle+Slade%0D%0A%09%09Q%287.2.3%29%3APhone+number%3A+%28617%29+619-4227%3Cbr%3Emichelle.Slade%40state.ma.us%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.2.3.1%29%3AGOTO%3Astart%0D%0A%09A%3AMike+Glennon%0D%0A%09%09Q%287.2.4%29%3APhone+number%3A+%28617%29+619-4128%3Cbr%3Emichael.V.Glennon%40massmail.state.ma.us%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.2.4.1%29%3AGOTO%3Astart%0D%0AA%3AJuvenile+Diversion%0D%0A%09Q%287.3%29%3ANicole+Robbins%3Cbr%3EPhone+number%3A+%28617%29+619-4253%3Cbr%3Enicole.Robbins%40massmail.state.ma.us%0D%0A%09A%3AThanks%21%0D%0A%09%09Q%287.3.1%29%3AGOTO%3Astart%0D%0AA%3ADYS+Offices%0D%0A%09Q%287.4%29%3AWhat+DYS+office+are+you+looking+for%3F%0D%0A%09A%3ACentral+%28Westborough%2C+MA%29%0D%0A%09%09Q%287.4.1%29%3APhone+number%3A+%28508%29+792-7611%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.4.1.1%29%3AGOTO%3Astart%0D%0A%09A%3AMetro+%28Dorchester%2C+MA%29%0D%0A%09%09Q%287.4.2%29%3APhone+number%3A+%28617%29+740-0100%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.4.2.1%29%3AGOTO%3Astart%0D%0A%09A%3ANortheast+%28Middleton%2C+MA%29%0D%0A%09%09Q%287.4.3%29%3APhone+number%3A+%28978%29+716-1100%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.4.3.1%29%3AGOTO%3Astart%0D%0A%09A%3ASoutheast+%28Taunton%2C+MA%29%0D%0A%09%09Q%287.4.4%29%3APhone+number%3A+%28508%29+828-3800%0D%0A%09%09A%3AThanks%21%09%0D%0A%09%09%09Q%287.4.4.1%29%3AGOTO%3Astart%0D%0A%09A%3AWestern+%28Springfield%2C+MA%29%0D%0A%09%09Q%287.4.5%29%3APhone+number%3A+%28413%29+783-0781%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.4.5.1%29%3AGOTO%3Astart%0D%0AA%3ADCF+workers%0D%0A%09Q%287.5%29%3AEmail+or+Phone+numbers%3F%0D%0A%09A%3AEmail%0D%0A%09%09Q%287.5.1%29%3AEmail+addresses+for+any+DCF+worker+follows+this+format+%3A+firstname.lastname%40massmail.state.ma.us%0D%0A%09%09A%3AThanks%21%0D%0A%09%09%09Q%287.5.1.1%29%3AGOTO%3Astart%0D%0A%09A%3APhone+number%0D%0A%09%09Q%287.5.2%29%3AWhat+location+does+the+DCF+worker+work+out+of%3F%0D%0A%09%09A%3ABoston+Central%0D%0A%09%09%09Q%287.5.2.1%29%3APhone+number%3A+%28617%29+748-2000%0D%0A%09%09%09A%3AThanks%21%0D%0A%09%09%09%09Q%287.5.2.1.1%29%3AGOTO%3Astart%0D%0A%09%09A%3ARoxbury+-+Dimock+Street%0D%0A%09%09%09Q%287.5.2.2%29%3APhone+number%3A++%28617%29+989-2800%0D%0A%09%09%09A%3AThanks%21%0D%0A%09%09%09%09Q%287.5.2.2.1%29%3AGOTO%3Astart%0D%0A%09%09A%3AChelsea+-+Harbor+Area%0D%0A%09%09%09Q%287.5.2.3%29%3APhone+number%3A+%28617%29+660-3400%0D%0A%09%09%09A%3AThanks%21%0D%0A%09%09%09%09Q%287.5.2.3.1%29%3AGOTO%3Astart%0D%0A%09%09A%3APark+Street%0D%0A%09%09%09Q%287.5.2.4%29%3APhone+number%3A+%28617%29+822-4700%0D%0A%09%09%09A%3AThanks%21%0D%0A%09%09%09%09Q%287.5.2.4.1%29%3AGOTO%3Astart%0D%0A</div><div id="ondeck" name="ondeck"><div id='Q-1' name='Q-1' style='display:none;'>Welcome to the Suffolk JDC Helper! What do you need help with?
+</div><div id='Q-1.1' name='Q-1.1' style='display:none;'>GOTO:3</div><div id='Q-1.2' name='Q-1.2' style='display:none;'>GOTO:2</div><div id='Q-1.3' name='Q-1.3' style='display:none;'>GOTO:4</div><div id='Q-1.4' name='Q-1.4' style='display:none;'>GOTO:6</div><div id='Q-1.5' name='Q-1.5' style='display:none;'>GOTO:5</div><div id='Q-1.6' name='Q-1.6' style='display:none;'>GOTO:7</div><div id='Q-2' name='Q-2' style='display:none;'>Once you get to the courtroom make sure the clerk knows you are on duty if they don't know yet.
+</div><div id='Q-2.1' name='Q-2.1' style='display:none;'>If there is a new arrest your supervisor should check the police report to make sure it is a case you can take.
+</div><div id='Q-2.1.1' name='Q-2.1.1' style='display:none;'>Read over the police report. Read over the charges and check for probable cause.
+</div><div id='Q-2.1.1.1' name='Q-2.1.1.1' style='display:none;'>GOTO:5</div><div id='Q-2.1.1.2' name='Q-2.1.1.2' style='display:none;'>Go to probation and ask to see if your client has an existing CORI/CARI
+</div><div id='Q-2.1.1.2.1' name='Q-2.1.1.2.1' style='display:none;'>Talk to the ADA and get as much information as possible on what they intend to do.
+</div><div id='Q-2.1.1.2.1.1' name='Q-2.1.1.2.1.1' style='display:none;'>What kind of diversion program do they want. Make sure you have enough information to give to your client to make sure they are willing to complete the program.
+</div><div id='Q-2.1.1.2.1.1.1' name='Q-2.1.1.2.1.1.1' style='display:none;'>GOTO:1</div><div id='Q-2.1.1.2.1.2' name='Q-2.1.1.2.1.2' style='display:none;'>Try to get more information about why they are requesting bail and how much they are requesting. 
+</div><div id='Q-2.1.1.2.1.2.1' name='Q-2.1.1.2.1.2.1' style='display:none;'>If you haven't checked with probation of previous default, do it now! Check with your client as well. If there was a default, was there a reason for it?
+</div><div id='Q-2.1.1.2.1.2.1.1' name='Q-2.1.1.2.1.2.1.1' style='display:none;'>Prepare a bail argument! Why is your client likely to come back to court? Try your best!
+</div><div id='Q-2.1.1.2.1.2.1.1.1' name='Q-2.1.1.2.1.2.1.1.1' style='display:none;'>GOTO:1</div><div id='Q-2.1.1.2.1.3' name='Q-2.1.1.2.1.3' style='display:none;'>Make sure these conditions have some connection to what led to the arrest. Negotiate with the ADA! 
+</div><div id='Q-2.1.1.2.1.3.1' name='Q-2.1.1.2.1.3.1' style='display:none;'>Make sure you speak to your client. Are these conditions doable? Don't set your client up for failure. 
+</div><div id='Q-2.1.1.2.1.3.1.1' name='Q-2.1.1.2.1.3.1.1' style='display:none;'>GOTO:1</div><div id='Q-3' name='Q-3' style='display:none;'>Below you can find several important documents
+</div><div id='Q-3.1' name='Q-3.1' style='display:none;'>Below you can find several important documents
+</div><div id='Q-3.1.1' name='Q-3.1.1' style='display:none;'>GOTO:1</div><div id='Q-3.1.2' name='Q-3.1.2' style='display:none;'>GOTO:1</div><div id='Q-3.1.3' name='Q-3.1.3' style='display:none;'>GOTO:1</div><div id='Q-3.1.4' name='Q-3.1.4' style='display:none;'>GOTO:1</div><div id='Q-3.1.5' name='Q-3.1.5' style='display:none;'>GOTO:1</div><div id='Q-3.2' name='Q-3.2' style='display:none;'>Below you can find several court forms you might need
+</div><div id='Q-3.2.1' name='Q-3.2.1' style='display:none;'>GOTO:1</div><div id='Q-3.2.2' name='Q-3.2.2' style='display:none;'>GOTO:1</div><div id='Q-3.2.3' name='Q-3.2.3' style='display:none;'>GOTO:1</div><div id='Q-3.3' name='Q-3.3' style='display:none;'>Below you can find several important clinic-wide documents
+</div><div id='Q-3.3.1' name='Q-3.3.1' style='display:none;'>GOTO:1</div><div id='Q-3.3.2' name='Q-3.3.2' style='display:none;'>GOTO:1</div><div id='Q-3.3.3' name='Q-3.3.3' style='display:none;'>GOTO:1</div><div id='Q-4' name='Q-4' style='display:none;'>Below you can find a link to relevant statutes
+</div><div id='Q-4.1' name='Q-4.1' style='display:none;'>GOTO:1</div><div id='Q-4.2' name='Q-4.2' style='display:none;'>GOTO:1</div><div id='Q-5' name='Q-5' style='display:none;'>Here you can find the link to the model jury instructions for common cases.
+</div><div id='Q-5.1' name='Q-5.1' style='display:none;'>GOTO:1</div><div id='Q-5.2' name='Q-5.2' style='display:none;'>GOTO:1</div><div id='Q-5.3' name='Q-5.3' style='display:none;'>GOTO:1</div><div id='Q-5.4' name='Q-5.4' style='display:none;'>GOTO:1</div><div id='Q-5.5' name='Q-5.5' style='display:none;'>GOTO:1</div><div id='Q-5.6' name='Q-5.6' style='display:none;'>GOTO:1</div><div id='Q-5.7' name='Q-5.7' style='display:none;'>GOTO:1</div><div id='Q-5.8' name='Q-5.8' style='display:none;'>GOTO:1</div><div id='Q-5.9' name='Q-5.9' style='display:none;'>GOTO:1</div><div id='Q-5.10' name='Q-5.10' style='display:none;'>GOTO:1</div><div id='Q-5.11' name='Q-5.11' style='display:none;'>GOTO:1</div><div id='Q-5.12' name='Q-5.12' style='display:none;'>GOTO:1</div><div id='Q-5.13' name='Q-5.13' style='display:none;'>GOTO:1</div><div id='Q-6' name='Q-6' style='display:none;'>Here you can find the link to some relevant cases
+</div><div id='Q-6.1' name='Q-6.1' style='display:none;'>GOTO:1</div><div id='Q-6.2' name='Q-6.2' style='display:none;'>GOTO:1</div><div id='Q-6.3' name='Q-6.3' style='display:none;'>GOTO:1</div><div id='Q-6.4' name='Q-6.4' style='display:none;'>GOTO:1</div><div id='Q-7' name='Q-7' style='display:none;'>Here you can find contacts and information you might find helpful! 
+</div><div id='Q-7.1' name='Q-7.1' style='display:none;'>Whose contact do you need?
+</div><div id='Q-7.1.1' name='Q-7.1.1' style='display:none;'>Phone number: (617) 788-8525
+</div><div id='Q-7.1.2' name='Q-7.1.2' style='display:none;'>Phone number: (617) 788-8571
+</div><div id='Q-7.1.3' name='Q-7.1.3' style='display:none;'>Phone number: (617) 788-8975
+</div><div id='Q-7.2' name='Q-7.2' style='display:none;'>Whose contact do you need?
+</div><div id='Q-7.2.1' name='Q-7.2.1' style='display:none;'>Phone number: (617) 619-4135<br>Email: leah.potash@state.ma.us
+</div><div id='Q-7.2.1.1' name='Q-7.2.1.1' style='display:none;'>GOTO:1</div><div id='Q-7.2.2' name='Q-7.2.2' style='display:none;'>Phone number: (617) 619-4234<br>brett.walker@massmail.state.ma.us
+</div><div id='Q-7.2.2.1' name='Q-7.2.2.1' style='display:none;'>GOTO:1</div><div id='Q-7.2.3' name='Q-7.2.3' style='display:none;'>Phone number: (617) 619-4227<br>michelle.Slade@state.ma.us
+</div><div id='Q-7.2.3.1' name='Q-7.2.3.1' style='display:none;'>GOTO:1</div><div id='Q-7.2.4' name='Q-7.2.4' style='display:none;'>Phone number: (617) 619-4128<br>michael.V.Glennon@massmail.state.ma.us
+</div><div id='Q-7.2.4.1' name='Q-7.2.4.1' style='display:none;'>GOTO:1</div><div id='Q-7.3' name='Q-7.3' style='display:none;'>Nicole Robbins<br>Phone number: (617) 619-4253<br>nicole.Robbins@massmail.state.ma.us
+</div><div id='Q-7.3.1' name='Q-7.3.1' style='display:none;'>GOTO:1</div><div id='Q-7.4' name='Q-7.4' style='display:none;'>What DYS office are you looking for?
+</div><div id='Q-7.4.1' name='Q-7.4.1' style='display:none;'>Phone number: (508) 792-7611
+</div><div id='Q-7.4.1.1' name='Q-7.4.1.1' style='display:none;'>GOTO:1</div><div id='Q-7.4.2' name='Q-7.4.2' style='display:none;'>Phone number: (617) 740-0100
+</div><div id='Q-7.4.2.1' name='Q-7.4.2.1' style='display:none;'>GOTO:1</div><div id='Q-7.4.3' name='Q-7.4.3' style='display:none;'>Phone number: (978) 716-1100
+</div><div id='Q-7.4.3.1' name='Q-7.4.3.1' style='display:none;'>GOTO:1</div><div id='Q-7.4.4' name='Q-7.4.4' style='display:none;'>Phone number: (508) 828-3800
+</div><div id='Q-7.4.4.1' name='Q-7.4.4.1' style='display:none;'>GOTO:1</div><div id='Q-7.4.5' name='Q-7.4.5' style='display:none;'>Phone number: (413) 783-0781
+</div><div id='Q-7.4.5.1' name='Q-7.4.5.1' style='display:none;'>GOTO:1</div><div id='Q-7.5' name='Q-7.5' style='display:none;'>Email or Phone numbers?
+</div><div id='Q-7.5.1' name='Q-7.5.1' style='display:none;'>Email addresses for any DCF worker follows this format : firstname.lastname@massmail.state.ma.us
+</div><div id='Q-7.5.1.1' name='Q-7.5.1.1' style='display:none;'>GOTO:1</div><div id='Q-7.5.2' name='Q-7.5.2' style='display:none;'>What location does the DCF worker work out of?
+</div><div id='Q-7.5.2.1' name='Q-7.5.2.1' style='display:none;'>Phone number: (617) 748-2000
+</div><div id='Q-7.5.2.1.1' name='Q-7.5.2.1.1' style='display:none;'>GOTO:1</div><div id='Q-7.5.2.2' name='Q-7.5.2.2' style='display:none;'>Phone number:  (617) 989-2800
+</div><div id='Q-7.5.2.2.1' name='Q-7.5.2.2.1' style='display:none;'>GOTO:1</div><div id='Q-7.5.2.3' name='Q-7.5.2.3' style='display:none;'>Phone number: (617) 660-3400
+</div><div id='Q-7.5.2.3.1' name='Q-7.5.2.3.1' style='display:none;'>GOTO:1</div><div id='Q-7.5.2.4' name='Q-7.5.2.4' style='display:none;'>Phone number: (617) 822-4700
+</div><div id='Q-7.5.2.4.1' name='Q-7.5.2.4.1' style='display:none;'>GOTO:1</div><div id='A-1.1' name='A-1.1' style='display:none;'>Important documents
+</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'>Important documents</div><div id='A-1.2' name='A-1.2' style='display:none;'>Duty day overview
+</div><div id='A-href-1.2' name='A-href-1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.2' name='A-target-1.2' style='display:none;'></div><div id='X-1.2' name='X-1.2' style='display:none;'>Duty day overview</div><div id='A-1.3' name='A-1.3' style='display:none;'>Relevant statutes
+</div><div id='A-href-1.3' name='A-href-1.3' style='display:none;'>javascript:void('');</div><div id='A-target-1.3' name='A-target-1.3' style='display:none;'></div><div id='X-1.3' name='X-1.3' style='display:none;'>Relevant statutes</div><div id='A-1.4' name='A-1.4' style='display:none;'>Relevant case law
+</div><div id='A-href-1.4' name='A-href-1.4' style='display:none;'>javascript:void('');</div><div id='A-target-1.4' name='A-target-1.4' style='display:none;'></div><div id='X-1.4' name='X-1.4' style='display:none;'>Relevant case law</div><div id='A-1.5' name='A-1.5' style='display:none;'>Model jury instructions for common crimes
+</div><div id='A-href-1.5' name='A-href-1.5' style='display:none;'>javascript:void('');</div><div id='A-target-1.5' name='A-target-1.5' style='display:none;'></div><div id='X-1.5' name='X-1.5' style='display:none;'>Model jury instructions for common crimes</div><div id='A-1.6' name='A-1.6' style='display:none;'>Important contacts
+</div><div id='A-href-1.6' name='A-href-1.6' style='display:none;'>javascript:void('');</div><div id='A-target-1.6' name='A-target-1.6' style='display:none;'></div><div id='X-1.6' name='X-1.6' style='display:none;'>Important contacts</div><div id='A-2.1' name='A-2.1' style='display:none;'>Ok, clerk knows I'm on duty. Now what?
+</div><div id='A-href-2.1' name='A-href-2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1' name='A-target-2.1' style='display:none;'></div><div id='X-2.1' name='X-2.1' style='display:none;'>Ok, clerk knows I'm on duty. Now what?</div><div id='A-2.1.1' name='A-2.1.1' style='display:none;'>We can take the case and now I have the police report! Now what?
+</div><div id='A-href-2.1.1' name='A-href-2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1' name='A-target-2.1.1' style='display:none;'></div><div id='X-2.1.1' name='X-2.1.1' style='display:none;'>We can take the case and now I have the police report! Now what?</div><div id='A-2.1.1.1' name='A-2.1.1.1' style='display:none;'>Take me to model jury instructions for the elements of a crime.
+</div><div id='A-href-2.1.1.1' name='A-href-2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1' name='A-target-2.1.1.1' style='display:none;'></div><div id='X-2.1.1.1' name='X-2.1.1.1' style='display:none;'>Take me to model jury instructions for the elements of a crime.</div><div id='A-2.1.1.2' name='A-2.1.1.2' style='display:none;'>I've reviewed the police report. Now what?
+</div><div id='A-href-2.1.1.2' name='A-href-2.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2' name='A-target-2.1.1.2' style='display:none;'></div><div id='X-2.1.1.2' name='X-2.1.1.2' style='display:none;'>I've reviewed the police report. Now what?</div><div id='A-2.1.1.2.1' name='A-2.1.1.2.1' style='display:none;'>Ok, now what?
+</div><div id='A-href-2.1.1.2.1' name='A-href-2.1.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1' name='A-target-2.1.1.2.1' style='display:none;'></div><div id='X-2.1.1.2.1' name='X-2.1.1.2.1' style='display:none;'>Ok, now what?</div><div id='A-2.1.1.2.1.1' name='A-2.1.1.2.1.1' style='display:none;'>ADA wants to divert the case
+</div><div id='A-href-2.1.1.2.1.1' name='A-href-2.1.1.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.1' name='A-target-2.1.1.2.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.1' name='X-2.1.1.2.1.1' style='display:none;'>ADA wants to divert the case</div><div id='A-2.1.1.2.1.1.1' name='A-2.1.1.2.1.1.1' style='display:none;'>I will let my client know!
+</div><div id='A-href-2.1.1.2.1.1.1' name='A-href-2.1.1.2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.1.1' name='A-target-2.1.1.2.1.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.1.1' name='X-2.1.1.2.1.1.1' style='display:none;'>I will let my client know!</div><div id='A-2.1.1.2.1.2' name='A-2.1.1.2.1.2' style='display:none;'>ADA will request bail
+</div><div id='A-href-2.1.1.2.1.2' name='A-href-2.1.1.2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.2' name='A-target-2.1.1.2.1.2' style='display:none;'></div><div id='X-2.1.1.2.1.2' name='X-2.1.1.2.1.2' style='display:none;'>ADA will request bail</div><div id='A-2.1.1.2.1.2.1' name='A-2.1.1.2.1.2.1' style='display:none;'>Ok, I talked to the ADA about bail, now what?
+</div><div id='A-href-2.1.1.2.1.2.1' name='A-href-2.1.1.2.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.2.1' name='A-target-2.1.1.2.1.2.1' style='display:none;'></div><div id='X-2.1.1.2.1.2.1' name='X-2.1.1.2.1.2.1' style='display:none;'>Ok, I talked to the ADA about bail, now what?</div><div id='A-2.1.1.2.1.2.1.1' name='A-2.1.1.2.1.2.1.1' style='display:none;'>Ok, I checked on defaults and spoke with my client. Now what?
+</div><div id='A-href-2.1.1.2.1.2.1.1' name='A-href-2.1.1.2.1.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.2.1.1' name='A-target-2.1.1.2.1.2.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.2.1.1' name='X-2.1.1.2.1.2.1.1' style='display:none;'>Ok, I checked on defaults and spoke with my client. Now what?</div><div id='A-2.1.1.2.1.2.1.1.1' name='A-2.1.1.2.1.2.1.1.1' style='display:none;'>Got it! 
+</div><div id='A-href-2.1.1.2.1.2.1.1.1' name='A-href-2.1.1.2.1.2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.2.1.1.1' name='A-target-2.1.1.2.1.2.1.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.2.1.1.1' name='X-2.1.1.2.1.2.1.1.1' style='display:none;'>Got it!</div><div id='A-2.1.1.2.1.3' name='A-2.1.1.2.1.3' style='display:none;'>ADA will request conditions for release
+</div><div id='A-href-2.1.1.2.1.3' name='A-href-2.1.1.2.1.3' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.3' name='A-target-2.1.1.2.1.3' style='display:none;'></div><div id='X-2.1.1.2.1.3' name='X-2.1.1.2.1.3' style='display:none;'>ADA will request conditions for release</div><div id='A-2.1.1.2.1.3.1' name='A-2.1.1.2.1.3.1' style='display:none;'>What else should I make note of?
+</div><div id='A-href-2.1.1.2.1.3.1' name='A-href-2.1.1.2.1.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.3.1' name='A-target-2.1.1.2.1.3.1' style='display:none;'></div><div id='X-2.1.1.2.1.3.1' name='X-2.1.1.2.1.3.1' style='display:none;'>What else should I make note of?</div><div id='A-2.1.1.2.1.3.1.1' name='A-2.1.1.2.1.3.1.1' style='display:none;'>Got it!
+</div><div id='A-href-2.1.1.2.1.3.1.1' name='A-href-2.1.1.2.1.3.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.3.1.1' name='A-target-2.1.1.2.1.3.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.3.1.1' name='X-2.1.1.2.1.3.1.1' style='display:none;'>Got it!</div><div id='A-3.1' name='A-3.1' style='display:none;'>JDC Documents
+</div><div id='A-href-3.1' name='A-href-3.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1' name='A-target-3.1' style='display:none;'></div><div id='X-3.1' name='X-3.1' style='display:none;'>JDC Documents</div><div id='A-3.1.1' name='A-3.1.1' style='display:none;'>SJC Rule 3:03 Disclosure & Notice of Appearance
+</div><div id='A-href-3.1.1' name='A-href-3.1.1' style='display:none;'>https://jpromes.github.io/ctl_final/Notice_of_Appearance_and_Disclosure_Vanessa.pdf</div><div id='A-target-3.1.1' name='A-target-3.1.1' style='display:none;'>target="_blank" i="https://jpromes.github.io/ctl_final/Notice_of_Appearance_and_Disclosure_Vanessa.pdf"</div><div id='X-3.1.1' name='X-3.1.1' style='display:none;'>SJC Rule 3:03 Disclosure & Notice of Appearance</div><div id='A-3.1.2' name='A-3.1.2' style='display:none;'>Authorization for Representation
+</div><div id='A-href-3.1.2' name='A-href-3.1.2' style='display:none;'>https://jpromes.github.io/ctl_final/Authorization_for_representation.pdf</div><div id='A-target-3.1.2' name='A-target-3.1.2' style='display:none;'>target="_blank" i="https://jpromes.github.io/ctl_final/Authorization_for_representation.pdf"</div><div id='X-3.1.2' name='X-3.1.2' style='display:none;'>Authorization for Representation</div><div id='A-3.1.3' name='A-3.1.3' style='display:none;'>Authorization to Disclose Protected Health and Other Information (HIPAA)
+</div><div id='A-href-3.1.3' name='A-href-3.1.3' style='display:none;'>https://jpromes/ctl_final/HIPAA_form.pdf</div><div id='A-target-3.1.3' name='A-target-3.1.3' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/HIPAA_form.pdf"</div><div id='X-3.1.3' name='X-3.1.3' style='display:none;'>Authorization to Disclose Protected Health and Other Information (HIPAA)</div><div id='A-3.1.4' name='A-3.1.4' style='display:none;'>YAD Summary of 2018 Crime Bill
+</div><div id='A-href-3.1.4' name='A-href-3.1.4' style='display:none;'>https://jpromes/ctl_final/YAD_Summary_Crime_Bill.pdf</div><div id='A-target-3.1.4' name='A-target-3.1.4' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/YAD_Summary_Crime_Bill.pdf"</div><div id='X-3.1.4' name='X-3.1.4' style='display:none;'>YAD Summary of 2018 Crime Bill</div><div id='A-3.1.5' name='A-3.1.5' style='display:none;'>JDC Information, Policies & Procedure 
+</div><div id='A-href-3.1.5' name='A-href-3.1.5' style='display:none;'>https://jpromes/ctl_final/Policies_Procedures.pdf</div><div id='A-target-3.1.5' name='A-target-3.1.5' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/Policies_Procedures.pdf"</div><div id='X-3.1.5' name='X-3.1.5' style='display:none;'>JDC Information, Policies & Procedure</div><div id='A-3.2' name='A-3.2' style='display:none;'>Court Forms
+</div><div id='A-href-3.2' name='A-href-3.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.2' name='A-target-3.2' style='display:none;'></div><div id='X-3.2' name='X-3.2' style='display:none;'>Court Forms</div><div id='A-3.2.1' name='A-3.2.1' style='display:none;'>Blank Motion
+</div><div id='A-href-3.2.1' name='A-href-3.2.1' style='display:none;'>https://jpromes/ctl_final/Blank_Motion.pdf</div><div id='A-target-3.2.1' name='A-target-3.2.1' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/Blank_Motion.pdf"</div><div id='X-3.2.1' name='X-3.2.1' style='display:none;'>Blank Motion</div><div id='A-3.2.2' name='A-3.2.2' style='display:none;'>Pretrial Conference Report
+</div><div id='A-href-3.2.2' name='A-href-3.2.2' style='display:none;'>https://jpromes/ctl_final/Pretrial_Conference_Report.pdf</div><div id='A-target-3.2.2' name='A-target-3.2.2' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/Pretrial_Conference_Report.pdf"</div><div id='X-3.2.2' name='X-3.2.2' style='display:none;'>Pretrial Conference Report</div><div id='A-3.2.3' name='A-3.2.3' style='display:none;'>Tender of Plea or Admission & Waiver of Rights
+</div><div id='A-href-3.2.3' name='A-href-3.2.3' style='display:none;'>https://jpromes/ctl_final/Tender_of_Plea_Waiver_of_Rights.pdf</div><div id='A-target-3.2.3' name='A-target-3.2.3' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/Tender_of_Plea_Waiver_of_Rights.pdf"</div><div id='X-3.2.3' name='X-3.2.3' style='display:none;'>Tender of Plea or Admission & Waiver of Rights</div><div id='A-3.3' name='A-3.3' style='display:none;'>Clinic-wide Documents 	
+</div><div id='A-href-3.3' name='A-href-3.3' style='display:none;'>javascript:void('');</div><div id='A-target-3.3' name='A-target-3.3' style='display:none;'></div><div id='X-3.3' name='X-3.3' style='display:none;'>Clinic-wide Documents</div><div id='A-3.3.1' name='A-3.3.1' style='display:none;'>Clinical Programs Student Handbook
+</div><div id='A-href-3.3.1' name='A-href-3.3.1' style='display:none;'>https://jpromes/ctl_final/blob/master/Clinic_Handbook.pdf</div><div id='A-target-3.3.1' name='A-target-3.3.1' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/blob/master/Clinic_Handbook.pdf"</div><div id='X-3.3.1' name='X-3.3.1' style='display:none;'>Clinical Programs Student Handbook</div><div id='A-3.3.2' name='A-3.3.2' style='display:none;'>Policies & Procedures Concerning Conflicts of Interest
+</div><div id='A-href-3.3.2' name='A-href-3.3.2' style='display:none;'>https://jpromes.github.io/ctl_final/Policies_Conflicts_Interest.pdf</div><div id='A-target-3.3.2' name='A-target-3.3.2' style='display:none;'>target="_blank" i="https://jpromes.github.io/ctl_final/Policies_Conflicts_Interest.pdf"</div><div id='X-3.3.2' name='X-3.3.2' style='display:none;'>Policies & Procedures Concerning Conflicts of Interest</div><div id='A-3.3.3' name='A-3.3.3' style='display:none;'>Policies Regarding Document Security and Use of Technology
+</div><div id='A-href-3.3.3' name='A-href-3.3.3' style='display:none;'>https://jpromes/ctl_final/blob/master/Security_Policies.pdf</div><div id='A-target-3.3.3' name='A-target-3.3.3' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/blob/master/Security_Policies.pdf"</div><div id='X-3.3.3' name='X-3.3.3' style='display:none;'>Policies Regarding Document Security and Use of Technology</div><div id='A-4.1' name='A-4.1' style='display:none;'>Bail c.276 §58
+</div><div id='A-href-4.1' name='A-href-4.1' style='display:none;'>https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleII/Chapter276/Section58</div><div id='A-target-4.1' name='A-target-4.1' style='display:none;'>target="_blank" i="https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleII/Chapter276/Section58"</div><div id='X-4.1' name='X-4.1' style='display:none;'>Bail c.276 §58</div><div id='A-4.2' name='A-4.2' style='display:none;'>Revocation of bail c.276 §58B
+</div><div id='A-href-4.2' name='A-href-4.2' style='display:none;'>https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleII/Chapter276/Section58B</div><div id='A-target-4.2' name='A-target-4.2' style='display:none;'>target="_blank" i="https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleII/Chapter276/Section58B"</div><div id='X-4.2' name='X-4.2' style='display:none;'>Revocation of bail c.276 §58B</div><div id='A-5.1' name='A-5.1' style='display:none;'>Disorderly conduct
+</div><div id='A-href-5.1' name='A-href-5.1' style='display:none;'>https://www.mass.gov/files/documents/2016/10/vc/7160-disorderly-conduct.pdf</div><div id='A-target-5.1' name='A-target-5.1' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/10/vc/7160-disorderly-conduct.pdf"</div><div id='X-5.1' name='X-5.1' style='display:none;'>Disorderly conduct</div><div id='A-5.2' name='A-5.2' style='display:none;'>Resisting arrest
+</div><div id='A-href-5.2' name='A-href-5.2' style='display:none;'>https://www.mass.gov/files/documents/2016/08/tx/7460-resisting-arrest.pdf</div><div id='A-target-5.2' name='A-target-5.2' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/tx/7460-resisting-arrest.pdf"</div><div id='X-5.2' name='X-5.2' style='display:none;'>Resisting arrest</div><div id='A-5.3' name='A-5.3' style='display:none;'>Carrying a firearm
+</div><div id='A-href-5.3' name='A-href-5.3' style='display:none;'>https://www.mass.gov/files/documents/2016/08/wp/7600-carrying-a-firearm.pdf</div><div id='A-target-5.3' name='A-target-5.3' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/wp/7600-carrying-a-firearm.pdf"</div><div id='X-5.3' name='X-5.3' style='display:none;'>Carrying a firearm</div><div id='A-5.4' name='A-5.4' style='display:none;'>Possession fo a firearm
+</div><div id='A-href-5.4' name='A-href-5.4' style='display:none;'>https://www.mass.gov/files/documents/2016/08/nh/7620-possession-of-a-firearm.pdf</div><div id='A-target-5.4' name='A-target-5.4' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/nh/7620-possession-of-a-firearm.pdf"</div><div id='X-5.4' name='X-5.4' style='display:none;'>Possession fo a firearm</div><div id='A-5.5' name='A-5.5' style='display:none;'>Distribution of a controlled substance; Possession with intent to distribute
+</div><div id='A-href-5.5' name='A-href-5.5' style='display:none;'>https://www.mass.gov/files/documents/2016/08/nj/7800-distribution-of-a-controlled-substance.pdf</div><div id='A-target-5.5' name='A-target-5.5' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/nj/7800-distribution-of-a-controlled-substance.pdf"</div><div id='X-5.5' name='X-5.5' style='display:none;'>Distribution of a controlled substance; Possession with intent to distribute</div><div id='A-5.6' name='A-5.6' style='display:none;'>Possession of a controlled substance
+</div><div id='A-href-5.6' name='A-href-5.6' style='display:none;'>https://www.mass.gov/files/documents/2016/08/vy/7820-possession-of-a-controlled-substance.pdf</div><div id='A-target-5.6' name='A-target-5.6' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/vy/7820-possession-of-a-controlled-substance.pdf"</div><div id='X-5.6' name='X-5.6' style='display:none;'>Possession of a controlled substance</div><div id='A-5.7' name='A-5.7' style='display:none;'>Breaking and entering 
+</div><div id='A-href-5.7' name='A-href-5.7' style='display:none;'>https://www.mass.gov/files/documents/2016/08/qx/8100-breaking-and-entering.pdf</div><div id='A-target-5.7' name='A-target-5.7' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/qx/8100-breaking-and-entering.pdf"</div><div id='X-5.7' name='X-5.7' style='display:none;'>Breaking and entering</div><div id='A-5.8' name='A-5.8' style='display:none;'>Possession of burglarious tools
+</div><div id='A-href-5.8' name='A-href-5.8' style='display:none;'>https://www.mass.gov/files/documents/2016/08/vh/8180-possession-of-burglarious-tools.pdf</div><div id='A-target-5.8' name='A-target-5.8' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/vh/8180-possession-of-burglarious-tools.pdf"</div><div id='X-5.8' name='X-5.8' style='display:none;'>Possession of burglarious tools</div><div id='A-5.9' name='A-5.9' style='display:none;'>Trespass
+</div><div id='A-href-5.9' name='A-href-5.9' style='display:none;'>https://www.mass.gov/files/documents/2016/08/vh/8220-trespass.pdf</div><div id='A-target-5.9' name='A-target-5.9' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/vh/8220-trespass.pdf"</div><div id='X-5.9' name='X-5.9' style='display:none;'>Trespass</div><div id='A-5.10' name='A-5.10' style='display:none;'>Vandalism
+</div><div id='A-href-5.10' name='A-href-5.10' style='display:none;'>https://www.mass.gov/files/documents/2016/08/or/8250-vandalism.pdf</div><div id='A-target-5.10' name='A-target-5.10' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/or/8250-vandalism.pdf"</div><div id='X-5.10' name='X-5.10' style='display:none;'>Vandalism</div><div id='A-5.11' name='A-5.11' style='display:none;'>Wonton destruction of property
+</div><div id='A-href-5.11' name='A-href-5.11' style='display:none;'>https://www.mass.gov/files/documents/2016/08/pp/8260-wanton-destruction-of-property.pdf</div><div id='A-target-5.11' name='A-target-5.11' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/pp/8260-wanton-destruction-of-property.pdf"</div><div id='X-5.11' name='X-5.11' style='display:none;'>Wonton destruction of property</div><div id='A-5.12' name='A-5.12' style='display:none;'>Wilful and malicious destruction of property
+</div><div id='A-href-5.12' name='A-href-5.12' style='display:none;'>https://www.mass.gov/files/documents/2016/08/wo/8280-wilful-and-malicious-destruction-of-property.pdf</div><div id='A-target-5.12' name='A-target-5.12' style='display:none;'></div><div id='X-5.12' name='X-5.12' style='display:none;'>Wilful and malicious destruction of property</div><div id='A-5.13' name='A-5.13' style='display:none;'>Additional Model Jury Instructions
+</div><div id='A-href-5.13' name='A-href-5.13' style='display:none;'>https://www.mass.gov/lists/criminal-model-jury-instructions-for-use-in-the-district-court</div><div id='A-target-5.13' name='A-target-5.13' style='display:none;'>target="_blank" i="https://www.mass.gov/lists/criminal-model-jury-instructions-for-use-in-the-district-court"</div><div id='X-5.13' name='X-5.13' style='display:none;'>Additional Model Jury Instructions</div><div id='A-6.1' name='A-6.1' style='display:none;'>Brangan v. Commonwealth, 478 Mass. 361
+</div><div id='A-href-6.1' name='A-href-6.1' style='display:none;'>http://masscases.com/cases/sjc/477/477mass691.html</div><div id='A-target-6.1' name='A-target-6.1' style='display:none;'>target="_blank" i="http://masscases.com/cases/sjc/477/477mass691.html"</div><div id='X-6.1' name='X-6.1' style='display:none;'>Brangan v. Commonwealth, 478 Mass. 361</div><div id='A-6.2' name='A-6.2' style='display:none;'>Commonwealth v. Pagan, 445 Mass. 315
+</div><div id='A-href-6.2' name='A-href-6.2' style='display:none;'>http://masscases.com/cases/sjc/445/445mass315.html</div><div id='A-target-6.2' name='A-target-6.2' style='display:none;'>target="_blank" i="http://masscases.com/cases/sjc/445/445mass315.html"</div><div id='X-6.2' name='X-6.2' style='display:none;'>Commonwealth v. Pagan, 445 Mass. 315</div><div id='A-6.3' name='A-6.3' style='display:none;'>Delaney v. Commonwealth, 415 Mass. 490
+</div><div id='A-href-6.3' name='A-href-6.3' style='display:none;'>http://masscases.com/cases/sjc/415/415mass490.html</div><div id='A-target-6.3' name='A-target-6.3' style='display:none;'>target="_blank" i="http://masscases.com/cases/sjc/415/415mass490.html"</div><div id='X-6.3' name='X-6.3' style='display:none;'>Delaney v. Commonwealth, 415 Mass. 490</div><div id='A-6.4' name='A-6.4' style='display:none;'>Paquette v. Commonwealth, 440 Mass. 121
+</div><div id='A-href-6.4' name='A-href-6.4' style='display:none;'>http://masscases.com/cases/sjc/440/440mass121.html</div><div id='A-target-6.4' name='A-target-6.4' style='display:none;'>target="_blank" i="http://masscases.com/cases/sjc/440/440mass121.html"</div><div id='X-6.4' name='X-6.4' style='display:none;'>Paquette v. Commonwealth, 440 Mass. 121</div><div id='A-7.1' name='A-7.1' style='display:none;'>Boston Juvenile Court
+</div><div id='A-href-7.1' name='A-href-7.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.1' name='A-target-7.1' style='display:none;'></div><div id='X-7.1' name='X-7.1' style='display:none;'>Boston Juvenile Court</div><div id='A-7.1.1' name='A-7.1.1' style='display:none;'>Clerk		
+</div><div id='A-href-7.1.1' name='A-href-7.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.1.1' name='A-target-7.1.1' style='display:none;'></div><div id='X-7.1.1' name='X-7.1.1' style='display:none;'>Clerk</div><div id='A-7.1.2' name='A-7.1.2' style='display:none;'>Probation
+</div><div id='A-href-7.1.2' name='A-href-7.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.1.2' name='A-target-7.1.2' style='display:none;'></div><div id='X-7.1.2' name='X-7.1.2' style='display:none;'>Probation</div><div id='A-7.1.3' name='A-7.1.3' style='display:none;'>Court clinic
+</div><div id='A-href-7.1.3' name='A-href-7.1.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.1.3' name='A-target-7.1.3' style='display:none;'></div><div id='X-7.1.3' name='X-7.1.3' style='display:none;'>Court clinic</div><div id='A-7.2' name='A-7.2' style='display:none;'>ADA's Office
+</div><div id='A-href-7.2' name='A-href-7.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.2' name='A-target-7.2' style='display:none;'></div><div id='X-7.2' name='X-7.2' style='display:none;'>ADA's Office</div><div id='A-7.2.1' name='A-7.2.1' style='display:none;'>Leah Potash
+</div><div id='A-href-7.2.1' name='A-href-7.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.1' name='A-target-7.2.1' style='display:none;'></div><div id='X-7.2.1' name='X-7.2.1' style='display:none;'>Leah Potash</div><div id='A-7.2.1.1' name='A-7.2.1.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.2.1.1' name='A-href-7.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.1.1' name='A-target-7.2.1.1' style='display:none;'></div><div id='X-7.2.1.1' name='X-7.2.1.1' style='display:none;'>Thanks!</div><div id='A-7.2.2' name='A-7.2.2' style='display:none;'>Brett Walker
+</div><div id='A-href-7.2.2' name='A-href-7.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.2' name='A-target-7.2.2' style='display:none;'></div><div id='X-7.2.2' name='X-7.2.2' style='display:none;'>Brett Walker</div><div id='A-7.2.2.1' name='A-7.2.2.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.2.2.1' name='A-href-7.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.2.1' name='A-target-7.2.2.1' style='display:none;'></div><div id='X-7.2.2.1' name='X-7.2.2.1' style='display:none;'>Thanks!</div><div id='A-7.2.3' name='A-7.2.3' style='display:none;'>Michelle Slade
+</div><div id='A-href-7.2.3' name='A-href-7.2.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.3' name='A-target-7.2.3' style='display:none;'></div><div id='X-7.2.3' name='X-7.2.3' style='display:none;'>Michelle Slade</div><div id='A-7.2.3.1' name='A-7.2.3.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.2.3.1' name='A-href-7.2.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.3.1' name='A-target-7.2.3.1' style='display:none;'></div><div id='X-7.2.3.1' name='X-7.2.3.1' style='display:none;'>Thanks!</div><div id='A-7.2.4' name='A-7.2.4' style='display:none;'>Mike Glennon
+</div><div id='A-href-7.2.4' name='A-href-7.2.4' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.4' name='A-target-7.2.4' style='display:none;'></div><div id='X-7.2.4' name='X-7.2.4' style='display:none;'>Mike Glennon</div><div id='A-7.2.4.1' name='A-7.2.4.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.2.4.1' name='A-href-7.2.4.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.4.1' name='A-target-7.2.4.1' style='display:none;'></div><div id='X-7.2.4.1' name='X-7.2.4.1' style='display:none;'>Thanks!</div><div id='A-7.3' name='A-7.3' style='display:none;'>Juvenile Diversion
+</div><div id='A-href-7.3' name='A-href-7.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.3' name='A-target-7.3' style='display:none;'></div><div id='X-7.3' name='X-7.3' style='display:none;'>Juvenile Diversion</div><div id='A-7.3.1' name='A-7.3.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.3.1' name='A-href-7.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.3.1' name='A-target-7.3.1' style='display:none;'></div><div id='X-7.3.1' name='X-7.3.1' style='display:none;'>Thanks!</div><div id='A-7.4' name='A-7.4' style='display:none;'>DYS Offices
+</div><div id='A-href-7.4' name='A-href-7.4' style='display:none;'>javascript:void('');</div><div id='A-target-7.4' name='A-target-7.4' style='display:none;'></div><div id='X-7.4' name='X-7.4' style='display:none;'>DYS Offices</div><div id='A-7.4.1' name='A-7.4.1' style='display:none;'>Central (Westborough, MA)
+</div><div id='A-href-7.4.1' name='A-href-7.4.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.1' name='A-target-7.4.1' style='display:none;'></div><div id='X-7.4.1' name='X-7.4.1' style='display:none;'>Central (Westborough, MA)</div><div id='A-7.4.1.1' name='A-7.4.1.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.4.1.1' name='A-href-7.4.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.1.1' name='A-target-7.4.1.1' style='display:none;'></div><div id='X-7.4.1.1' name='X-7.4.1.1' style='display:none;'>Thanks!</div><div id='A-7.4.2' name='A-7.4.2' style='display:none;'>Metro (Dorchester, MA)
+</div><div id='A-href-7.4.2' name='A-href-7.4.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.2' name='A-target-7.4.2' style='display:none;'></div><div id='X-7.4.2' name='X-7.4.2' style='display:none;'>Metro (Dorchester, MA)</div><div id='A-7.4.2.1' name='A-7.4.2.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.4.2.1' name='A-href-7.4.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.2.1' name='A-target-7.4.2.1' style='display:none;'></div><div id='X-7.4.2.1' name='X-7.4.2.1' style='display:none;'>Thanks!</div><div id='A-7.4.3' name='A-7.4.3' style='display:none;'>Northeast (Middleton, MA)
+</div><div id='A-href-7.4.3' name='A-href-7.4.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.3' name='A-target-7.4.3' style='display:none;'></div><div id='X-7.4.3' name='X-7.4.3' style='display:none;'>Northeast (Middleton, MA)</div><div id='A-7.4.3.1' name='A-7.4.3.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.4.3.1' name='A-href-7.4.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.3.1' name='A-target-7.4.3.1' style='display:none;'></div><div id='X-7.4.3.1' name='X-7.4.3.1' style='display:none;'>Thanks!</div><div id='A-7.4.4' name='A-7.4.4' style='display:none;'>Southeast (Taunton, MA)
+</div><div id='A-href-7.4.4' name='A-href-7.4.4' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.4' name='A-target-7.4.4' style='display:none;'></div><div id='X-7.4.4' name='X-7.4.4' style='display:none;'>Southeast (Taunton, MA)</div><div id='A-7.4.4.1' name='A-7.4.4.1' style='display:none;'>Thanks!	
+</div><div id='A-href-7.4.4.1' name='A-href-7.4.4.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.4.1' name='A-target-7.4.4.1' style='display:none;'></div><div id='X-7.4.4.1' name='X-7.4.4.1' style='display:none;'>Thanks!</div><div id='A-7.4.5' name='A-7.4.5' style='display:none;'>Western (Springfield, MA)
+</div><div id='A-href-7.4.5' name='A-href-7.4.5' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.5' name='A-target-7.4.5' style='display:none;'></div><div id='X-7.4.5' name='X-7.4.5' style='display:none;'>Western (Springfield, MA)</div><div id='A-7.4.5.1' name='A-7.4.5.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.4.5.1' name='A-href-7.4.5.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.5.1' name='A-target-7.4.5.1' style='display:none;'></div><div id='X-7.4.5.1' name='X-7.4.5.1' style='display:none;'>Thanks!</div><div id='A-7.5' name='A-7.5' style='display:none;'>DCF workers
+</div><div id='A-href-7.5' name='A-href-7.5' style='display:none;'>javascript:void('');</div><div id='A-target-7.5' name='A-target-7.5' style='display:none;'></div><div id='X-7.5' name='X-7.5' style='display:none;'>DCF workers</div><div id='A-7.5.1' name='A-7.5.1' style='display:none;'>Email
+</div><div id='A-href-7.5.1' name='A-href-7.5.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.1' name='A-target-7.5.1' style='display:none;'></div><div id='X-7.5.1' name='X-7.5.1' style='display:none;'>Email</div><div id='A-7.5.1.1' name='A-7.5.1.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.1.1' name='A-href-7.5.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.1.1' name='A-target-7.5.1.1' style='display:none;'></div><div id='X-7.5.1.1' name='X-7.5.1.1' style='display:none;'>Thanks!</div><div id='A-7.5.2' name='A-7.5.2' style='display:none;'>Phone number
+</div><div id='A-href-7.5.2' name='A-href-7.5.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2' name='A-target-7.5.2' style='display:none;'></div><div id='X-7.5.2' name='X-7.5.2' style='display:none;'>Phone number</div><div id='A-7.5.2.1' name='A-7.5.2.1' style='display:none;'>Boston Central
+</div><div id='A-href-7.5.2.1' name='A-href-7.5.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.1' name='A-target-7.5.2.1' style='display:none;'></div><div id='X-7.5.2.1' name='X-7.5.2.1' style='display:none;'>Boston Central</div><div id='A-7.5.2.1.1' name='A-7.5.2.1.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.2.1.1' name='A-href-7.5.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.1.1' name='A-target-7.5.2.1.1' style='display:none;'></div><div id='X-7.5.2.1.1' name='X-7.5.2.1.1' style='display:none;'>Thanks!</div><div id='A-7.5.2.2' name='A-7.5.2.2' style='display:none;'>Roxbury - Dimock Street
+</div><div id='A-href-7.5.2.2' name='A-href-7.5.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.2' name='A-target-7.5.2.2' style='display:none;'></div><div id='X-7.5.2.2' name='X-7.5.2.2' style='display:none;'>Roxbury - Dimock Street</div><div id='A-7.5.2.2.1' name='A-7.5.2.2.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.2.2.1' name='A-href-7.5.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.2.1' name='A-target-7.5.2.2.1' style='display:none;'></div><div id='X-7.5.2.2.1' name='X-7.5.2.2.1' style='display:none;'>Thanks!</div><div id='A-7.5.2.3' name='A-7.5.2.3' style='display:none;'>Chelsea - Harbor Area
+</div><div id='A-href-7.5.2.3' name='A-href-7.5.2.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.3' name='A-target-7.5.2.3' style='display:none;'></div><div id='X-7.5.2.3' name='X-7.5.2.3' style='display:none;'>Chelsea - Harbor Area</div><div id='A-7.5.2.3.1' name='A-7.5.2.3.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.2.3.1' name='A-href-7.5.2.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.3.1' name='A-target-7.5.2.3.1' style='display:none;'></div><div id='X-7.5.2.3.1' name='X-7.5.2.3.1' style='display:none;'>Thanks!</div><div id='A-7.5.2.4' name='A-7.5.2.4' style='display:none;'>Park Street
+</div><div id='A-href-7.5.2.4' name='A-href-7.5.2.4' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.4' name='A-target-7.5.2.4' style='display:none;'></div><div id='X-7.5.2.4' name='X-7.5.2.4' style='display:none;'>Park Street</div><div id='A-7.5.2.4.1' name='A-7.5.2.4.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.2.4.1' name='A-href-7.5.2.4.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.4.1' name='A-target-7.5.2.4.1' style='display:none;'></div><div id='X-7.5.2.4.1' name='X-7.5.2.4.1' style='display:none;'>Thanks!</div>
+<script>
+	var QVnames = [['1','start'],['1.1','1.1'],['1.2','1.2'],['1.3','1.3'],['1.4','1.4'],['1.5','1.5'],['1.6','1.6'],['2','duty'],['2.1','2.1'],['2.1.1','2.1.1'],['2.1.1.1','2.1.1.1'],['2.1.1.2','2.1.1.2'],['2.1.1.2.1','2.1.1.2.1'],['2.1.1.2.1.1','2.1.1.2.1.1'],['2.1.1.2.1.1.1','2.1.1.2.1.1.1'],['2.1.1.2.1.2','2.1.1.2.1.2'],['2.1.1.2.1.2.1','2.1.1.2.1.2.1'],['2.1.1.2.1.2.1.1','2.1.1.2.1.2.1.1'],['2.1.1.2.1.2.1.1.1','2.1.1.2.1.2.1.1.1'],['2.1.1.2.1.3','2.1.1.2.1.3'],['2.1.1.2.1.3.1','2.1.1.2.1.3.1'],['2.1.1.2.1.3.1.1','2.1.1.2.1.3.1.1'],['3','docs'],['3.1','3.1'],['3.1.1','3.1.1'],['3.1.2','3.1.2'],['3.1.3','3.1.3'],['3.1.4','3.1.4'],['3.1.5','3.1.5'],['3.2','3.2'],['3.2.1','3.2.1'],['3.2.2','3.2.2'],['3.2.3','3.2.3'],['3.3','3.3'],['3.3.1','3.3.1'],['3.3.2','3.3.2'],['3.3.3','3.3.3'],['4','statute'],['4.1','4.1'],['4.2','4.2'],['5','jury'],['5.1','5.1'],['5.2','5.2'],['5.3','5.3'],['5.4','5.4'],['5.5','5.5'],['5.6','5.6'],['5.7','5.7'],['5.8','5.8'],['5.9','5.9'],['5.10','5.10'],['5.11','5.11'],['5.12','5.12'],['5.13','5.13'],['6','case'],['6.1','6.1'],['6.2','6.2'],['6.3','6.3'],['6.4','6.4'],['7','contact'],['7.1','7.1'],['7.1.1','7.1.1'],['7.1.2','7.1.2'],['7.1.3','7.1.3'],['7.2','7.2'],['7.2.1','7.2.1'],['7.2.1.1','7.2.1.1'],['7.2.2','7.2.2'],['7.2.2.1','7.2.2.1'],['7.2.3','7.2.3'],['7.2.3.1','7.2.3.1'],['7.2.4','7.2.4'],['7.2.4.1','7.2.4.1'],['7.3','7.3'],['7.3.1','7.3.1'],['7.4','7.4'],['7.4.1','7.4.1'],['7.4.1.1','7.4.1.1'],['7.4.2','7.4.2'],['7.4.2.1','7.4.2.1'],['7.4.3','7.4.3'],['7.4.3.1','7.4.3.1'],['7.4.4','7.4.4'],['7.4.4.1','7.4.4.1'],['7.4.5','7.4.5'],['7.4.5.1','7.4.5.1'],['7.5','7.5'],['7.5.1','7.5.1'],['7.5.1.1','7.5.1.1'],['7.5.2','7.5.2'],['7.5.2.1','7.5.2.1'],['7.5.2.1.1','7.5.2.1.1'],['7.5.2.2','7.5.2.2'],['7.5.2.2.1','7.5.2.2.1'],['7.5.2.3','7.5.2.3'],['7.5.2.3.1','7.5.2.3.1'],['7.5.2.4','7.5.2.4'],['7.5.2.4.1','7.5.2.4.1']];
+</script>
+</div><textarea id="original" name="original" style="display:none;" disabled="disabled"><div id='Q-1' name='Q-1' style='display:none;'>Welcome to the Suffolk JDC Helper! What do you need help with?
+</div><div id='Q-1.1' name='Q-1.1' style='display:none;'>GOTO:3</div><div id='Q-1.2' name='Q-1.2' style='display:none;'>GOTO:2</div><div id='Q-1.3' name='Q-1.3' style='display:none;'>GOTO:4</div><div id='Q-1.4' name='Q-1.4' style='display:none;'>GOTO:6</div><div id='Q-1.5' name='Q-1.5' style='display:none;'>GOTO:5</div><div id='Q-1.6' name='Q-1.6' style='display:none;'>GOTO:7</div><div id='Q-2' name='Q-2' style='display:none;'>Once you get to the courtroom make sure the clerk knows you are on duty if they don't know yet.
+</div><div id='Q-2.1' name='Q-2.1' style='display:none;'>If there is a new arrest your supervisor should check the police report to make sure it is a case you can take.
+</div><div id='Q-2.1.1' name='Q-2.1.1' style='display:none;'>Read over the police report. Read over the charges and check for probable cause.
+</div><div id='Q-2.1.1.1' name='Q-2.1.1.1' style='display:none;'>GOTO:5</div><div id='Q-2.1.1.2' name='Q-2.1.1.2' style='display:none;'>Go to probation and ask to see if your client has an existing CORI/CARI
+</div><div id='Q-2.1.1.2.1' name='Q-2.1.1.2.1' style='display:none;'>Talk to the ADA and get as much information as possible on what they intend to do.
+</div><div id='Q-2.1.1.2.1.1' name='Q-2.1.1.2.1.1' style='display:none;'>What kind of diversion program do they want. Make sure you have enough information to give to your client to make sure they are willing to complete the program.
+</div><div id='Q-2.1.1.2.1.1.1' name='Q-2.1.1.2.1.1.1' style='display:none;'>GOTO:1</div><div id='Q-2.1.1.2.1.2' name='Q-2.1.1.2.1.2' style='display:none;'>Try to get more information about why they are requesting bail and how much they are requesting. 
+</div><div id='Q-2.1.1.2.1.2.1' name='Q-2.1.1.2.1.2.1' style='display:none;'>If you haven't checked with probation of previous default, do it now! Check with your client as well. If there was a default, was there a reason for it?
+</div><div id='Q-2.1.1.2.1.2.1.1' name='Q-2.1.1.2.1.2.1.1' style='display:none;'>Prepare a bail argument! Why is your client likely to come back to court? Try your best!
+</div><div id='Q-2.1.1.2.1.2.1.1.1' name='Q-2.1.1.2.1.2.1.1.1' style='display:none;'>GOTO:1</div><div id='Q-2.1.1.2.1.3' name='Q-2.1.1.2.1.3' style='display:none;'>Make sure these conditions have some connection to what led to the arrest. Negotiate with the ADA! 
+</div><div id='Q-2.1.1.2.1.3.1' name='Q-2.1.1.2.1.3.1' style='display:none;'>Make sure you speak to your client. Are these conditions doable? Don't set your client up for failure. 
+</div><div id='Q-2.1.1.2.1.3.1.1' name='Q-2.1.1.2.1.3.1.1' style='display:none;'>GOTO:1</div><div id='Q-3' name='Q-3' style='display:none;'>Below you can find several important documents
+</div><div id='Q-3.1' name='Q-3.1' style='display:none;'>Below you can find several important documents
+</div><div id='Q-3.1.1' name='Q-3.1.1' style='display:none;'>GOTO:1</div><div id='Q-3.1.2' name='Q-3.1.2' style='display:none;'>GOTO:1</div><div id='Q-3.1.3' name='Q-3.1.3' style='display:none;'>GOTO:1</div><div id='Q-3.1.4' name='Q-3.1.4' style='display:none;'>GOTO:1</div><div id='Q-3.1.5' name='Q-3.1.5' style='display:none;'>GOTO:1</div><div id='Q-3.2' name='Q-3.2' style='display:none;'>Below you can find several court forms you might need
+</div><div id='Q-3.2.1' name='Q-3.2.1' style='display:none;'>GOTO:1</div><div id='Q-3.2.2' name='Q-3.2.2' style='display:none;'>GOTO:1</div><div id='Q-3.2.3' name='Q-3.2.3' style='display:none;'>GOTO:1</div><div id='Q-3.3' name='Q-3.3' style='display:none;'>Below you can find several important clinic-wide documents
+</div><div id='Q-3.3.1' name='Q-3.3.1' style='display:none;'>GOTO:1</div><div id='Q-3.3.2' name='Q-3.3.2' style='display:none;'>GOTO:1</div><div id='Q-3.3.3' name='Q-3.3.3' style='display:none;'>GOTO:1</div><div id='Q-4' name='Q-4' style='display:none;'>Below you can find a link to relevant statutes
+</div><div id='Q-4.1' name='Q-4.1' style='display:none;'>GOTO:1</div><div id='Q-4.2' name='Q-4.2' style='display:none;'>GOTO:1</div><div id='Q-5' name='Q-5' style='display:none;'>Here you can find the link to the model jury instructions for common cases.
+</div><div id='Q-5.1' name='Q-5.1' style='display:none;'>GOTO:1</div><div id='Q-5.2' name='Q-5.2' style='display:none;'>GOTO:1</div><div id='Q-5.3' name='Q-5.3' style='display:none;'>GOTO:1</div><div id='Q-5.4' name='Q-5.4' style='display:none;'>GOTO:1</div><div id='Q-5.5' name='Q-5.5' style='display:none;'>GOTO:1</div><div id='Q-5.6' name='Q-5.6' style='display:none;'>GOTO:1</div><div id='Q-5.7' name='Q-5.7' style='display:none;'>GOTO:1</div><div id='Q-5.8' name='Q-5.8' style='display:none;'>GOTO:1</div><div id='Q-5.9' name='Q-5.9' style='display:none;'>GOTO:1</div><div id='Q-5.10' name='Q-5.10' style='display:none;'>GOTO:1</div><div id='Q-5.11' name='Q-5.11' style='display:none;'>GOTO:1</div><div id='Q-5.12' name='Q-5.12' style='display:none;'>GOTO:1</div><div id='Q-5.13' name='Q-5.13' style='display:none;'>GOTO:1</div><div id='Q-6' name='Q-6' style='display:none;'>Here you can find the link to some relevant cases
+</div><div id='Q-6.1' name='Q-6.1' style='display:none;'>GOTO:1</div><div id='Q-6.2' name='Q-6.2' style='display:none;'>GOTO:1</div><div id='Q-6.3' name='Q-6.3' style='display:none;'>GOTO:1</div><div id='Q-6.4' name='Q-6.4' style='display:none;'>GOTO:1</div><div id='Q-7' name='Q-7' style='display:none;'>Here you can find contacts and information you might find helpful! 
+</div><div id='Q-7.1' name='Q-7.1' style='display:none;'>Whose contact do you need?
+</div><div id='Q-7.1.1' name='Q-7.1.1' style='display:none;'>Phone number: (617) 788-8525
+</div><div id='Q-7.1.2' name='Q-7.1.2' style='display:none;'>Phone number: (617) 788-8571
+</div><div id='Q-7.1.3' name='Q-7.1.3' style='display:none;'>Phone number: (617) 788-8975
+</div><div id='Q-7.2' name='Q-7.2' style='display:none;'>Whose contact do you need?
+</div><div id='Q-7.2.1' name='Q-7.2.1' style='display:none;'>Phone number: (617) 619-4135<br>Email: leah.potash@state.ma.us
+</div><div id='Q-7.2.1.1' name='Q-7.2.1.1' style='display:none;'>GOTO:1</div><div id='Q-7.2.2' name='Q-7.2.2' style='display:none;'>Phone number: (617) 619-4234<br>brett.walker@massmail.state.ma.us
+</div><div id='Q-7.2.2.1' name='Q-7.2.2.1' style='display:none;'>GOTO:1</div><div id='Q-7.2.3' name='Q-7.2.3' style='display:none;'>Phone number: (617) 619-4227<br>michelle.Slade@state.ma.us
+</div><div id='Q-7.2.3.1' name='Q-7.2.3.1' style='display:none;'>GOTO:1</div><div id='Q-7.2.4' name='Q-7.2.4' style='display:none;'>Phone number: (617) 619-4128<br>michael.V.Glennon@massmail.state.ma.us
+</div><div id='Q-7.2.4.1' name='Q-7.2.4.1' style='display:none;'>GOTO:1</div><div id='Q-7.3' name='Q-7.3' style='display:none;'>Nicole Robbins<br>Phone number: (617) 619-4253<br>nicole.Robbins@massmail.state.ma.us
+</div><div id='Q-7.3.1' name='Q-7.3.1' style='display:none;'>GOTO:1</div><div id='Q-7.4' name='Q-7.4' style='display:none;'>What DYS office are you looking for?
+</div><div id='Q-7.4.1' name='Q-7.4.1' style='display:none;'>Phone number: (508) 792-7611
+</div><div id='Q-7.4.1.1' name='Q-7.4.1.1' style='display:none;'>GOTO:1</div><div id='Q-7.4.2' name='Q-7.4.2' style='display:none;'>Phone number: (617) 740-0100
+</div><div id='Q-7.4.2.1' name='Q-7.4.2.1' style='display:none;'>GOTO:1</div><div id='Q-7.4.3' name='Q-7.4.3' style='display:none;'>Phone number: (978) 716-1100
+</div><div id='Q-7.4.3.1' name='Q-7.4.3.1' style='display:none;'>GOTO:1</div><div id='Q-7.4.4' name='Q-7.4.4' style='display:none;'>Phone number: (508) 828-3800
+</div><div id='Q-7.4.4.1' name='Q-7.4.4.1' style='display:none;'>GOTO:1</div><div id='Q-7.4.5' name='Q-7.4.5' style='display:none;'>Phone number: (413) 783-0781
+</div><div id='Q-7.4.5.1' name='Q-7.4.5.1' style='display:none;'>GOTO:1</div><div id='Q-7.5' name='Q-7.5' style='display:none;'>Email or Phone numbers?
+</div><div id='Q-7.5.1' name='Q-7.5.1' style='display:none;'>Email addresses for any DCF worker follows this format : firstname.lastname@massmail.state.ma.us
+</div><div id='Q-7.5.1.1' name='Q-7.5.1.1' style='display:none;'>GOTO:1</div><div id='Q-7.5.2' name='Q-7.5.2' style='display:none;'>What location does the DCF worker work out of?
+</div><div id='Q-7.5.2.1' name='Q-7.5.2.1' style='display:none;'>Phone number: (617) 748-2000
+</div><div id='Q-7.5.2.1.1' name='Q-7.5.2.1.1' style='display:none;'>GOTO:1</div><div id='Q-7.5.2.2' name='Q-7.5.2.2' style='display:none;'>Phone number:  (617) 989-2800
+</div><div id='Q-7.5.2.2.1' name='Q-7.5.2.2.1' style='display:none;'>GOTO:1</div><div id='Q-7.5.2.3' name='Q-7.5.2.3' style='display:none;'>Phone number: (617) 660-3400
+</div><div id='Q-7.5.2.3.1' name='Q-7.5.2.3.1' style='display:none;'>GOTO:1</div><div id='Q-7.5.2.4' name='Q-7.5.2.4' style='display:none;'>Phone number: (617) 822-4700
+</div><div id='Q-7.5.2.4.1' name='Q-7.5.2.4.1' style='display:none;'>GOTO:1</div><div id='A-1.1' name='A-1.1' style='display:none;'>Important documents
+</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'>Important documents</div><div id='A-1.2' name='A-1.2' style='display:none;'>Duty day overview
+</div><div id='A-href-1.2' name='A-href-1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.2' name='A-target-1.2' style='display:none;'></div><div id='X-1.2' name='X-1.2' style='display:none;'>Duty day overview</div><div id='A-1.3' name='A-1.3' style='display:none;'>Relevant statutes
+</div><div id='A-href-1.3' name='A-href-1.3' style='display:none;'>javascript:void('');</div><div id='A-target-1.3' name='A-target-1.3' style='display:none;'></div><div id='X-1.3' name='X-1.3' style='display:none;'>Relevant statutes</div><div id='A-1.4' name='A-1.4' style='display:none;'>Relevant case law
+</div><div id='A-href-1.4' name='A-href-1.4' style='display:none;'>javascript:void('');</div><div id='A-target-1.4' name='A-target-1.4' style='display:none;'></div><div id='X-1.4' name='X-1.4' style='display:none;'>Relevant case law</div><div id='A-1.5' name='A-1.5' style='display:none;'>Model jury instructions for common crimes
+</div><div id='A-href-1.5' name='A-href-1.5' style='display:none;'>javascript:void('');</div><div id='A-target-1.5' name='A-target-1.5' style='display:none;'></div><div id='X-1.5' name='X-1.5' style='display:none;'>Model jury instructions for common crimes</div><div id='A-1.6' name='A-1.6' style='display:none;'>Important contacts
+</div><div id='A-href-1.6' name='A-href-1.6' style='display:none;'>javascript:void('');</div><div id='A-target-1.6' name='A-target-1.6' style='display:none;'></div><div id='X-1.6' name='X-1.6' style='display:none;'>Important contacts</div><div id='A-2.1' name='A-2.1' style='display:none;'>Ok, clerk knows I'm on duty. Now what?
+</div><div id='A-href-2.1' name='A-href-2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1' name='A-target-2.1' style='display:none;'></div><div id='X-2.1' name='X-2.1' style='display:none;'>Ok, clerk knows I'm on duty. Now what?</div><div id='A-2.1.1' name='A-2.1.1' style='display:none;'>We can take the case and now I have the police report! Now what?
+</div><div id='A-href-2.1.1' name='A-href-2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1' name='A-target-2.1.1' style='display:none;'></div><div id='X-2.1.1' name='X-2.1.1' style='display:none;'>We can take the case and now I have the police report! Now what?</div><div id='A-2.1.1.1' name='A-2.1.1.1' style='display:none;'>Take me to model jury instructions for the elements of a crime.
+</div><div id='A-href-2.1.1.1' name='A-href-2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.1' name='A-target-2.1.1.1' style='display:none;'></div><div id='X-2.1.1.1' name='X-2.1.1.1' style='display:none;'>Take me to model jury instructions for the elements of a crime.</div><div id='A-2.1.1.2' name='A-2.1.1.2' style='display:none;'>I've reviewed the police report. Now what?
+</div><div id='A-href-2.1.1.2' name='A-href-2.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2' name='A-target-2.1.1.2' style='display:none;'></div><div id='X-2.1.1.2' name='X-2.1.1.2' style='display:none;'>I've reviewed the police report. Now what?</div><div id='A-2.1.1.2.1' name='A-2.1.1.2.1' style='display:none;'>Ok, now what?
+</div><div id='A-href-2.1.1.2.1' name='A-href-2.1.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1' name='A-target-2.1.1.2.1' style='display:none;'></div><div id='X-2.1.1.2.1' name='X-2.1.1.2.1' style='display:none;'>Ok, now what?</div><div id='A-2.1.1.2.1.1' name='A-2.1.1.2.1.1' style='display:none;'>ADA wants to divert the case
+</div><div id='A-href-2.1.1.2.1.1' name='A-href-2.1.1.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.1' name='A-target-2.1.1.2.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.1' name='X-2.1.1.2.1.1' style='display:none;'>ADA wants to divert the case</div><div id='A-2.1.1.2.1.1.1' name='A-2.1.1.2.1.1.1' style='display:none;'>I will let my client know!
+</div><div id='A-href-2.1.1.2.1.1.1' name='A-href-2.1.1.2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.1.1' name='A-target-2.1.1.2.1.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.1.1' name='X-2.1.1.2.1.1.1' style='display:none;'>I will let my client know!</div><div id='A-2.1.1.2.1.2' name='A-2.1.1.2.1.2' style='display:none;'>ADA will request bail
+</div><div id='A-href-2.1.1.2.1.2' name='A-href-2.1.1.2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.2' name='A-target-2.1.1.2.1.2' style='display:none;'></div><div id='X-2.1.1.2.1.2' name='X-2.1.1.2.1.2' style='display:none;'>ADA will request bail</div><div id='A-2.1.1.2.1.2.1' name='A-2.1.1.2.1.2.1' style='display:none;'>Ok, I talked to the ADA about bail, now what?
+</div><div id='A-href-2.1.1.2.1.2.1' name='A-href-2.1.1.2.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.2.1' name='A-target-2.1.1.2.1.2.1' style='display:none;'></div><div id='X-2.1.1.2.1.2.1' name='X-2.1.1.2.1.2.1' style='display:none;'>Ok, I talked to the ADA about bail, now what?</div><div id='A-2.1.1.2.1.2.1.1' name='A-2.1.1.2.1.2.1.1' style='display:none;'>Ok, I checked on defaults and spoke with my client. Now what?
+</div><div id='A-href-2.1.1.2.1.2.1.1' name='A-href-2.1.1.2.1.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.2.1.1' name='A-target-2.1.1.2.1.2.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.2.1.1' name='X-2.1.1.2.1.2.1.1' style='display:none;'>Ok, I checked on defaults and spoke with my client. Now what?</div><div id='A-2.1.1.2.1.2.1.1.1' name='A-2.1.1.2.1.2.1.1.1' style='display:none;'>Got it! 
+</div><div id='A-href-2.1.1.2.1.2.1.1.1' name='A-href-2.1.1.2.1.2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.2.1.1.1' name='A-target-2.1.1.2.1.2.1.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.2.1.1.1' name='X-2.1.1.2.1.2.1.1.1' style='display:none;'>Got it!</div><div id='A-2.1.1.2.1.3' name='A-2.1.1.2.1.3' style='display:none;'>ADA will request conditions for release
+</div><div id='A-href-2.1.1.2.1.3' name='A-href-2.1.1.2.1.3' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.3' name='A-target-2.1.1.2.1.3' style='display:none;'></div><div id='X-2.1.1.2.1.3' name='X-2.1.1.2.1.3' style='display:none;'>ADA will request conditions for release</div><div id='A-2.1.1.2.1.3.1' name='A-2.1.1.2.1.3.1' style='display:none;'>What else should I make note of?
+</div><div id='A-href-2.1.1.2.1.3.1' name='A-href-2.1.1.2.1.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.3.1' name='A-target-2.1.1.2.1.3.1' style='display:none;'></div><div id='X-2.1.1.2.1.3.1' name='X-2.1.1.2.1.3.1' style='display:none;'>What else should I make note of?</div><div id='A-2.1.1.2.1.3.1.1' name='A-2.1.1.2.1.3.1.1' style='display:none;'>Got it!
+</div><div id='A-href-2.1.1.2.1.3.1.1' name='A-href-2.1.1.2.1.3.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-2.1.1.2.1.3.1.1' name='A-target-2.1.1.2.1.3.1.1' style='display:none;'></div><div id='X-2.1.1.2.1.3.1.1' name='X-2.1.1.2.1.3.1.1' style='display:none;'>Got it!</div><div id='A-3.1' name='A-3.1' style='display:none;'>JDC Documents
+</div><div id='A-href-3.1' name='A-href-3.1' style='display:none;'>javascript:void('');</div><div id='A-target-3.1' name='A-target-3.1' style='display:none;'></div><div id='X-3.1' name='X-3.1' style='display:none;'>JDC Documents</div><div id='A-3.1.1' name='A-3.1.1' style='display:none;'>SJC Rule 3:03 Disclosure & Notice of Appearance
+</div><div id='A-href-3.1.1' name='A-href-3.1.1' style='display:none;'>https://jpromes.github.io/ctl_final/Notice_of_Appearance_and_Disclosure_Vanessa.pdf</div><div id='A-target-3.1.1' name='A-target-3.1.1' style='display:none;'>target="_blank" i="https://jpromes.github.io/ctl_final/Notice_of_Appearance_and_Disclosure_Vanessa.pdf"</div><div id='X-3.1.1' name='X-3.1.1' style='display:none;'>SJC Rule 3:03 Disclosure & Notice of Appearance</div><div id='A-3.1.2' name='A-3.1.2' style='display:none;'>Authorization for Representation
+</div><div id='A-href-3.1.2' name='A-href-3.1.2' style='display:none;'>https://jpromes.github.io/ctl_final/Authorization_for_representation.pdf</div><div id='A-target-3.1.2' name='A-target-3.1.2' style='display:none;'>target="_blank" i="https://jpromes.github.io/ctl_final/Authorization_for_representation.pdf"</div><div id='X-3.1.2' name='X-3.1.2' style='display:none;'>Authorization for Representation</div><div id='A-3.1.3' name='A-3.1.3' style='display:none;'>Authorization to Disclose Protected Health and Other Information (HIPAA)
+</div><div id='A-href-3.1.3' name='A-href-3.1.3' style='display:none;'>https://jpromes/ctl_final/HIPAA_form.pdf</div><div id='A-target-3.1.3' name='A-target-3.1.3' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/HIPAA_form.pdf"</div><div id='X-3.1.3' name='X-3.1.3' style='display:none;'>Authorization to Disclose Protected Health and Other Information (HIPAA)</div><div id='A-3.1.4' name='A-3.1.4' style='display:none;'>YAD Summary of 2018 Crime Bill
+</div><div id='A-href-3.1.4' name='A-href-3.1.4' style='display:none;'>https://jpromes/ctl_final/YAD_Summary_Crime_Bill.pdf</div><div id='A-target-3.1.4' name='A-target-3.1.4' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/YAD_Summary_Crime_Bill.pdf"</div><div id='X-3.1.4' name='X-3.1.4' style='display:none;'>YAD Summary of 2018 Crime Bill</div><div id='A-3.1.5' name='A-3.1.5' style='display:none;'>JDC Information, Policies & Procedure 
+</div><div id='A-href-3.1.5' name='A-href-3.1.5' style='display:none;'>https://jpromes/ctl_final/Policies_Procedures.pdf</div><div id='A-target-3.1.5' name='A-target-3.1.5' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/Policies_Procedures.pdf"</div><div id='X-3.1.5' name='X-3.1.5' style='display:none;'>JDC Information, Policies & Procedure</div><div id='A-3.2' name='A-3.2' style='display:none;'>Court Forms
+</div><div id='A-href-3.2' name='A-href-3.2' style='display:none;'>javascript:void('');</div><div id='A-target-3.2' name='A-target-3.2' style='display:none;'></div><div id='X-3.2' name='X-3.2' style='display:none;'>Court Forms</div><div id='A-3.2.1' name='A-3.2.1' style='display:none;'>Blank Motion
+</div><div id='A-href-3.2.1' name='A-href-3.2.1' style='display:none;'>https://jpromes/ctl_final/Blank_Motion.pdf</div><div id='A-target-3.2.1' name='A-target-3.2.1' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/Blank_Motion.pdf"</div><div id='X-3.2.1' name='X-3.2.1' style='display:none;'>Blank Motion</div><div id='A-3.2.2' name='A-3.2.2' style='display:none;'>Pretrial Conference Report
+</div><div id='A-href-3.2.2' name='A-href-3.2.2' style='display:none;'>https://jpromes/ctl_final/Pretrial_Conference_Report.pdf</div><div id='A-target-3.2.2' name='A-target-3.2.2' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/Pretrial_Conference_Report.pdf"</div><div id='X-3.2.2' name='X-3.2.2' style='display:none;'>Pretrial Conference Report</div><div id='A-3.2.3' name='A-3.2.3' style='display:none;'>Tender of Plea or Admission & Waiver of Rights
+</div><div id='A-href-3.2.3' name='A-href-3.2.3' style='display:none;'>https://jpromes/ctl_final/Tender_of_Plea_Waiver_of_Rights.pdf</div><div id='A-target-3.2.3' name='A-target-3.2.3' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/Tender_of_Plea_Waiver_of_Rights.pdf"</div><div id='X-3.2.3' name='X-3.2.3' style='display:none;'>Tender of Plea or Admission & Waiver of Rights</div><div id='A-3.3' name='A-3.3' style='display:none;'>Clinic-wide Documents 	
+</div><div id='A-href-3.3' name='A-href-3.3' style='display:none;'>javascript:void('');</div><div id='A-target-3.3' name='A-target-3.3' style='display:none;'></div><div id='X-3.3' name='X-3.3' style='display:none;'>Clinic-wide Documents</div><div id='A-3.3.1' name='A-3.3.1' style='display:none;'>Clinical Programs Student Handbook
+</div><div id='A-href-3.3.1' name='A-href-3.3.1' style='display:none;'>https://jpromes/ctl_final/blob/master/Clinic_Handbook.pdf</div><div id='A-target-3.3.1' name='A-target-3.3.1' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/blob/master/Clinic_Handbook.pdf"</div><div id='X-3.3.1' name='X-3.3.1' style='display:none;'>Clinical Programs Student Handbook</div><div id='A-3.3.2' name='A-3.3.2' style='display:none;'>Policies & Procedures Concerning Conflicts of Interest
+</div><div id='A-href-3.3.2' name='A-href-3.3.2' style='display:none;'>https://jpromes.github.io/ctl_final/Policies_Conflicts_Interest.pdf</div><div id='A-target-3.3.2' name='A-target-3.3.2' style='display:none;'>target="_blank" i="https://jpromes.github.io/ctl_final/Policies_Conflicts_Interest.pdf"</div><div id='X-3.3.2' name='X-3.3.2' style='display:none;'>Policies & Procedures Concerning Conflicts of Interest</div><div id='A-3.3.3' name='A-3.3.3' style='display:none;'>Policies Regarding Document Security and Use of Technology
+</div><div id='A-href-3.3.3' name='A-href-3.3.3' style='display:none;'>https://jpromes/ctl_final/blob/master/Security_Policies.pdf</div><div id='A-target-3.3.3' name='A-target-3.3.3' style='display:none;'>target="_blank" i="https://jpromes/ctl_final/blob/master/Security_Policies.pdf"</div><div id='X-3.3.3' name='X-3.3.3' style='display:none;'>Policies Regarding Document Security and Use of Technology</div><div id='A-4.1' name='A-4.1' style='display:none;'>Bail c.276 §58
+</div><div id='A-href-4.1' name='A-href-4.1' style='display:none;'>https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleII/Chapter276/Section58</div><div id='A-target-4.1' name='A-target-4.1' style='display:none;'>target="_blank" i="https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleII/Chapter276/Section58"</div><div id='X-4.1' name='X-4.1' style='display:none;'>Bail c.276 §58</div><div id='A-4.2' name='A-4.2' style='display:none;'>Revocation of bail c.276 §58B
+</div><div id='A-href-4.2' name='A-href-4.2' style='display:none;'>https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleII/Chapter276/Section58B</div><div id='A-target-4.2' name='A-target-4.2' style='display:none;'>target="_blank" i="https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleII/Chapter276/Section58B"</div><div id='X-4.2' name='X-4.2' style='display:none;'>Revocation of bail c.276 §58B</div><div id='A-5.1' name='A-5.1' style='display:none;'>Disorderly conduct
+</div><div id='A-href-5.1' name='A-href-5.1' style='display:none;'>https://www.mass.gov/files/documents/2016/10/vc/7160-disorderly-conduct.pdf</div><div id='A-target-5.1' name='A-target-5.1' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/10/vc/7160-disorderly-conduct.pdf"</div><div id='X-5.1' name='X-5.1' style='display:none;'>Disorderly conduct</div><div id='A-5.2' name='A-5.2' style='display:none;'>Resisting arrest
+</div><div id='A-href-5.2' name='A-href-5.2' style='display:none;'>https://www.mass.gov/files/documents/2016/08/tx/7460-resisting-arrest.pdf</div><div id='A-target-5.2' name='A-target-5.2' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/tx/7460-resisting-arrest.pdf"</div><div id='X-5.2' name='X-5.2' style='display:none;'>Resisting arrest</div><div id='A-5.3' name='A-5.3' style='display:none;'>Carrying a firearm
+</div><div id='A-href-5.3' name='A-href-5.3' style='display:none;'>https://www.mass.gov/files/documents/2016/08/wp/7600-carrying-a-firearm.pdf</div><div id='A-target-5.3' name='A-target-5.3' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/wp/7600-carrying-a-firearm.pdf"</div><div id='X-5.3' name='X-5.3' style='display:none;'>Carrying a firearm</div><div id='A-5.4' name='A-5.4' style='display:none;'>Possession fo a firearm
+</div><div id='A-href-5.4' name='A-href-5.4' style='display:none;'>https://www.mass.gov/files/documents/2016/08/nh/7620-possession-of-a-firearm.pdf</div><div id='A-target-5.4' name='A-target-5.4' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/nh/7620-possession-of-a-firearm.pdf"</div><div id='X-5.4' name='X-5.4' style='display:none;'>Possession fo a firearm</div><div id='A-5.5' name='A-5.5' style='display:none;'>Distribution of a controlled substance; Possession with intent to distribute
+</div><div id='A-href-5.5' name='A-href-5.5' style='display:none;'>https://www.mass.gov/files/documents/2016/08/nj/7800-distribution-of-a-controlled-substance.pdf</div><div id='A-target-5.5' name='A-target-5.5' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/nj/7800-distribution-of-a-controlled-substance.pdf"</div><div id='X-5.5' name='X-5.5' style='display:none;'>Distribution of a controlled substance; Possession with intent to distribute</div><div id='A-5.6' name='A-5.6' style='display:none;'>Possession of a controlled substance
+</div><div id='A-href-5.6' name='A-href-5.6' style='display:none;'>https://www.mass.gov/files/documents/2016/08/vy/7820-possession-of-a-controlled-substance.pdf</div><div id='A-target-5.6' name='A-target-5.6' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/vy/7820-possession-of-a-controlled-substance.pdf"</div><div id='X-5.6' name='X-5.6' style='display:none;'>Possession of a controlled substance</div><div id='A-5.7' name='A-5.7' style='display:none;'>Breaking and entering 
+</div><div id='A-href-5.7' name='A-href-5.7' style='display:none;'>https://www.mass.gov/files/documents/2016/08/qx/8100-breaking-and-entering.pdf</div><div id='A-target-5.7' name='A-target-5.7' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/qx/8100-breaking-and-entering.pdf"</div><div id='X-5.7' name='X-5.7' style='display:none;'>Breaking and entering</div><div id='A-5.8' name='A-5.8' style='display:none;'>Possession of burglarious tools
+</div><div id='A-href-5.8' name='A-href-5.8' style='display:none;'>https://www.mass.gov/files/documents/2016/08/vh/8180-possession-of-burglarious-tools.pdf</div><div id='A-target-5.8' name='A-target-5.8' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/vh/8180-possession-of-burglarious-tools.pdf"</div><div id='X-5.8' name='X-5.8' style='display:none;'>Possession of burglarious tools</div><div id='A-5.9' name='A-5.9' style='display:none;'>Trespass
+</div><div id='A-href-5.9' name='A-href-5.9' style='display:none;'>https://www.mass.gov/files/documents/2016/08/vh/8220-trespass.pdf</div><div id='A-target-5.9' name='A-target-5.9' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/vh/8220-trespass.pdf"</div><div id='X-5.9' name='X-5.9' style='display:none;'>Trespass</div><div id='A-5.10' name='A-5.10' style='display:none;'>Vandalism
+</div><div id='A-href-5.10' name='A-href-5.10' style='display:none;'>https://www.mass.gov/files/documents/2016/08/or/8250-vandalism.pdf</div><div id='A-target-5.10' name='A-target-5.10' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/or/8250-vandalism.pdf"</div><div id='X-5.10' name='X-5.10' style='display:none;'>Vandalism</div><div id='A-5.11' name='A-5.11' style='display:none;'>Wonton destruction of property
+</div><div id='A-href-5.11' name='A-href-5.11' style='display:none;'>https://www.mass.gov/files/documents/2016/08/pp/8260-wanton-destruction-of-property.pdf</div><div id='A-target-5.11' name='A-target-5.11' style='display:none;'>target="_blank" i="https://www.mass.gov/files/documents/2016/08/pp/8260-wanton-destruction-of-property.pdf"</div><div id='X-5.11' name='X-5.11' style='display:none;'>Wonton destruction of property</div><div id='A-5.12' name='A-5.12' style='display:none;'>Wilful and malicious destruction of property
+</div><div id='A-href-5.12' name='A-href-5.12' style='display:none;'>https://www.mass.gov/files/documents/2016/08/wo/8280-wilful-and-malicious-destruction-of-property.pdf</div><div id='A-target-5.12' name='A-target-5.12' style='display:none;'></div><div id='X-5.12' name='X-5.12' style='display:none;'>Wilful and malicious destruction of property</div><div id='A-5.13' name='A-5.13' style='display:none;'>Additional Model Jury Instructions
+</div><div id='A-href-5.13' name='A-href-5.13' style='display:none;'>https://www.mass.gov/lists/criminal-model-jury-instructions-for-use-in-the-district-court</div><div id='A-target-5.13' name='A-target-5.13' style='display:none;'>target="_blank" i="https://www.mass.gov/lists/criminal-model-jury-instructions-for-use-in-the-district-court"</div><div id='X-5.13' name='X-5.13' style='display:none;'>Additional Model Jury Instructions</div><div id='A-6.1' name='A-6.1' style='display:none;'>Brangan v. Commonwealth, 478 Mass. 361
+</div><div id='A-href-6.1' name='A-href-6.1' style='display:none;'>http://masscases.com/cases/sjc/477/477mass691.html</div><div id='A-target-6.1' name='A-target-6.1' style='display:none;'>target="_blank" i="http://masscases.com/cases/sjc/477/477mass691.html"</div><div id='X-6.1' name='X-6.1' style='display:none;'>Brangan v. Commonwealth, 478 Mass. 361</div><div id='A-6.2' name='A-6.2' style='display:none;'>Commonwealth v. Pagan, 445 Mass. 315
+</div><div id='A-href-6.2' name='A-href-6.2' style='display:none;'>http://masscases.com/cases/sjc/445/445mass315.html</div><div id='A-target-6.2' name='A-target-6.2' style='display:none;'>target="_blank" i="http://masscases.com/cases/sjc/445/445mass315.html"</div><div id='X-6.2' name='X-6.2' style='display:none;'>Commonwealth v. Pagan, 445 Mass. 315</div><div id='A-6.3' name='A-6.3' style='display:none;'>Delaney v. Commonwealth, 415 Mass. 490
+</div><div id='A-href-6.3' name='A-href-6.3' style='display:none;'>http://masscases.com/cases/sjc/415/415mass490.html</div><div id='A-target-6.3' name='A-target-6.3' style='display:none;'>target="_blank" i="http://masscases.com/cases/sjc/415/415mass490.html"</div><div id='X-6.3' name='X-6.3' style='display:none;'>Delaney v. Commonwealth, 415 Mass. 490</div><div id='A-6.4' name='A-6.4' style='display:none;'>Paquette v. Commonwealth, 440 Mass. 121
+</div><div id='A-href-6.4' name='A-href-6.4' style='display:none;'>http://masscases.com/cases/sjc/440/440mass121.html</div><div id='A-target-6.4' name='A-target-6.4' style='display:none;'>target="_blank" i="http://masscases.com/cases/sjc/440/440mass121.html"</div><div id='X-6.4' name='X-6.4' style='display:none;'>Paquette v. Commonwealth, 440 Mass. 121</div><div id='A-7.1' name='A-7.1' style='display:none;'>Boston Juvenile Court
+</div><div id='A-href-7.1' name='A-href-7.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.1' name='A-target-7.1' style='display:none;'></div><div id='X-7.1' name='X-7.1' style='display:none;'>Boston Juvenile Court</div><div id='A-7.1.1' name='A-7.1.1' style='display:none;'>Clerk		
+</div><div id='A-href-7.1.1' name='A-href-7.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.1.1' name='A-target-7.1.1' style='display:none;'></div><div id='X-7.1.1' name='X-7.1.1' style='display:none;'>Clerk</div><div id='A-7.1.2' name='A-7.1.2' style='display:none;'>Probation
+</div><div id='A-href-7.1.2' name='A-href-7.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.1.2' name='A-target-7.1.2' style='display:none;'></div><div id='X-7.1.2' name='X-7.1.2' style='display:none;'>Probation</div><div id='A-7.1.3' name='A-7.1.3' style='display:none;'>Court clinic
+</div><div id='A-href-7.1.3' name='A-href-7.1.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.1.3' name='A-target-7.1.3' style='display:none;'></div><div id='X-7.1.3' name='X-7.1.3' style='display:none;'>Court clinic</div><div id='A-7.2' name='A-7.2' style='display:none;'>ADA's Office
+</div><div id='A-href-7.2' name='A-href-7.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.2' name='A-target-7.2' style='display:none;'></div><div id='X-7.2' name='X-7.2' style='display:none;'>ADA's Office</div><div id='A-7.2.1' name='A-7.2.1' style='display:none;'>Leah Potash
+</div><div id='A-href-7.2.1' name='A-href-7.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.1' name='A-target-7.2.1' style='display:none;'></div><div id='X-7.2.1' name='X-7.2.1' style='display:none;'>Leah Potash</div><div id='A-7.2.1.1' name='A-7.2.1.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.2.1.1' name='A-href-7.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.1.1' name='A-target-7.2.1.1' style='display:none;'></div><div id='X-7.2.1.1' name='X-7.2.1.1' style='display:none;'>Thanks!</div><div id='A-7.2.2' name='A-7.2.2' style='display:none;'>Brett Walker
+</div><div id='A-href-7.2.2' name='A-href-7.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.2' name='A-target-7.2.2' style='display:none;'></div><div id='X-7.2.2' name='X-7.2.2' style='display:none;'>Brett Walker</div><div id='A-7.2.2.1' name='A-7.2.2.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.2.2.1' name='A-href-7.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.2.1' name='A-target-7.2.2.1' style='display:none;'></div><div id='X-7.2.2.1' name='X-7.2.2.1' style='display:none;'>Thanks!</div><div id='A-7.2.3' name='A-7.2.3' style='display:none;'>Michelle Slade
+</div><div id='A-href-7.2.3' name='A-href-7.2.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.3' name='A-target-7.2.3' style='display:none;'></div><div id='X-7.2.3' name='X-7.2.3' style='display:none;'>Michelle Slade</div><div id='A-7.2.3.1' name='A-7.2.3.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.2.3.1' name='A-href-7.2.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.3.1' name='A-target-7.2.3.1' style='display:none;'></div><div id='X-7.2.3.1' name='X-7.2.3.1' style='display:none;'>Thanks!</div><div id='A-7.2.4' name='A-7.2.4' style='display:none;'>Mike Glennon
+</div><div id='A-href-7.2.4' name='A-href-7.2.4' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.4' name='A-target-7.2.4' style='display:none;'></div><div id='X-7.2.4' name='X-7.2.4' style='display:none;'>Mike Glennon</div><div id='A-7.2.4.1' name='A-7.2.4.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.2.4.1' name='A-href-7.2.4.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.2.4.1' name='A-target-7.2.4.1' style='display:none;'></div><div id='X-7.2.4.1' name='X-7.2.4.1' style='display:none;'>Thanks!</div><div id='A-7.3' name='A-7.3' style='display:none;'>Juvenile Diversion
+</div><div id='A-href-7.3' name='A-href-7.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.3' name='A-target-7.3' style='display:none;'></div><div id='X-7.3' name='X-7.3' style='display:none;'>Juvenile Diversion</div><div id='A-7.3.1' name='A-7.3.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.3.1' name='A-href-7.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.3.1' name='A-target-7.3.1' style='display:none;'></div><div id='X-7.3.1' name='X-7.3.1' style='display:none;'>Thanks!</div><div id='A-7.4' name='A-7.4' style='display:none;'>DYS Offices
+</div><div id='A-href-7.4' name='A-href-7.4' style='display:none;'>javascript:void('');</div><div id='A-target-7.4' name='A-target-7.4' style='display:none;'></div><div id='X-7.4' name='X-7.4' style='display:none;'>DYS Offices</div><div id='A-7.4.1' name='A-7.4.1' style='display:none;'>Central (Westborough, MA)
+</div><div id='A-href-7.4.1' name='A-href-7.4.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.1' name='A-target-7.4.1' style='display:none;'></div><div id='X-7.4.1' name='X-7.4.1' style='display:none;'>Central (Westborough, MA)</div><div id='A-7.4.1.1' name='A-7.4.1.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.4.1.1' name='A-href-7.4.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.1.1' name='A-target-7.4.1.1' style='display:none;'></div><div id='X-7.4.1.1' name='X-7.4.1.1' style='display:none;'>Thanks!</div><div id='A-7.4.2' name='A-7.4.2' style='display:none;'>Metro (Dorchester, MA)
+</div><div id='A-href-7.4.2' name='A-href-7.4.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.2' name='A-target-7.4.2' style='display:none;'></div><div id='X-7.4.2' name='X-7.4.2' style='display:none;'>Metro (Dorchester, MA)</div><div id='A-7.4.2.1' name='A-7.4.2.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.4.2.1' name='A-href-7.4.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.2.1' name='A-target-7.4.2.1' style='display:none;'></div><div id='X-7.4.2.1' name='X-7.4.2.1' style='display:none;'>Thanks!</div><div id='A-7.4.3' name='A-7.4.3' style='display:none;'>Northeast (Middleton, MA)
+</div><div id='A-href-7.4.3' name='A-href-7.4.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.3' name='A-target-7.4.3' style='display:none;'></div><div id='X-7.4.3' name='X-7.4.3' style='display:none;'>Northeast (Middleton, MA)</div><div id='A-7.4.3.1' name='A-7.4.3.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.4.3.1' name='A-href-7.4.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.3.1' name='A-target-7.4.3.1' style='display:none;'></div><div id='X-7.4.3.1' name='X-7.4.3.1' style='display:none;'>Thanks!</div><div id='A-7.4.4' name='A-7.4.4' style='display:none;'>Southeast (Taunton, MA)
+</div><div id='A-href-7.4.4' name='A-href-7.4.4' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.4' name='A-target-7.4.4' style='display:none;'></div><div id='X-7.4.4' name='X-7.4.4' style='display:none;'>Southeast (Taunton, MA)</div><div id='A-7.4.4.1' name='A-7.4.4.1' style='display:none;'>Thanks!	
+</div><div id='A-href-7.4.4.1' name='A-href-7.4.4.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.4.1' name='A-target-7.4.4.1' style='display:none;'></div><div id='X-7.4.4.1' name='X-7.4.4.1' style='display:none;'>Thanks!</div><div id='A-7.4.5' name='A-7.4.5' style='display:none;'>Western (Springfield, MA)
+</div><div id='A-href-7.4.5' name='A-href-7.4.5' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.5' name='A-target-7.4.5' style='display:none;'></div><div id='X-7.4.5' name='X-7.4.5' style='display:none;'>Western (Springfield, MA)</div><div id='A-7.4.5.1' name='A-7.4.5.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.4.5.1' name='A-href-7.4.5.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.4.5.1' name='A-target-7.4.5.1' style='display:none;'></div><div id='X-7.4.5.1' name='X-7.4.5.1' style='display:none;'>Thanks!</div><div id='A-7.5' name='A-7.5' style='display:none;'>DCF workers
+</div><div id='A-href-7.5' name='A-href-7.5' style='display:none;'>javascript:void('');</div><div id='A-target-7.5' name='A-target-7.5' style='display:none;'></div><div id='X-7.5' name='X-7.5' style='display:none;'>DCF workers</div><div id='A-7.5.1' name='A-7.5.1' style='display:none;'>Email
+</div><div id='A-href-7.5.1' name='A-href-7.5.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.1' name='A-target-7.5.1' style='display:none;'></div><div id='X-7.5.1' name='X-7.5.1' style='display:none;'>Email</div><div id='A-7.5.1.1' name='A-7.5.1.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.1.1' name='A-href-7.5.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.1.1' name='A-target-7.5.1.1' style='display:none;'></div><div id='X-7.5.1.1' name='X-7.5.1.1' style='display:none;'>Thanks!</div><div id='A-7.5.2' name='A-7.5.2' style='display:none;'>Phone number
+</div><div id='A-href-7.5.2' name='A-href-7.5.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2' name='A-target-7.5.2' style='display:none;'></div><div id='X-7.5.2' name='X-7.5.2' style='display:none;'>Phone number</div><div id='A-7.5.2.1' name='A-7.5.2.1' style='display:none;'>Boston Central
+</div><div id='A-href-7.5.2.1' name='A-href-7.5.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.1' name='A-target-7.5.2.1' style='display:none;'></div><div id='X-7.5.2.1' name='X-7.5.2.1' style='display:none;'>Boston Central</div><div id='A-7.5.2.1.1' name='A-7.5.2.1.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.2.1.1' name='A-href-7.5.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.1.1' name='A-target-7.5.2.1.1' style='display:none;'></div><div id='X-7.5.2.1.1' name='X-7.5.2.1.1' style='display:none;'>Thanks!</div><div id='A-7.5.2.2' name='A-7.5.2.2' style='display:none;'>Roxbury - Dimock Street
+</div><div id='A-href-7.5.2.2' name='A-href-7.5.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.2' name='A-target-7.5.2.2' style='display:none;'></div><div id='X-7.5.2.2' name='X-7.5.2.2' style='display:none;'>Roxbury - Dimock Street</div><div id='A-7.5.2.2.1' name='A-7.5.2.2.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.2.2.1' name='A-href-7.5.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.2.1' name='A-target-7.5.2.2.1' style='display:none;'></div><div id='X-7.5.2.2.1' name='X-7.5.2.2.1' style='display:none;'>Thanks!</div><div id='A-7.5.2.3' name='A-7.5.2.3' style='display:none;'>Chelsea - Harbor Area
+</div><div id='A-href-7.5.2.3' name='A-href-7.5.2.3' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.3' name='A-target-7.5.2.3' style='display:none;'></div><div id='X-7.5.2.3' name='X-7.5.2.3' style='display:none;'>Chelsea - Harbor Area</div><div id='A-7.5.2.3.1' name='A-7.5.2.3.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.2.3.1' name='A-href-7.5.2.3.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.3.1' name='A-target-7.5.2.3.1' style='display:none;'></div><div id='X-7.5.2.3.1' name='X-7.5.2.3.1' style='display:none;'>Thanks!</div><div id='A-7.5.2.4' name='A-7.5.2.4' style='display:none;'>Park Street
+</div><div id='A-href-7.5.2.4' name='A-href-7.5.2.4' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.4' name='A-target-7.5.2.4' style='display:none;'></div><div id='X-7.5.2.4' name='X-7.5.2.4' style='display:none;'>Park Street</div><div id='A-7.5.2.4.1' name='A-7.5.2.4.1' style='display:none;'>Thanks!
+</div><div id='A-href-7.5.2.4.1' name='A-href-7.5.2.4.1' style='display:none;'>javascript:void('');</div><div id='A-target-7.5.2.4.1' name='A-target-7.5.2.4.1' style='display:none;'></div><div id='X-7.5.2.4.1' name='X-7.5.2.4.1' style='display:none;'>Thanks!</div>
+<script>
+	var QVnames = [['1','start'],['1.1','1.1'],['1.2','1.2'],['1.3','1.3'],['1.4','1.4'],['1.5','1.5'],['1.6','1.6'],['2','duty'],['2.1','2.1'],['2.1.1','2.1.1'],['2.1.1.1','2.1.1.1'],['2.1.1.2','2.1.1.2'],['2.1.1.2.1','2.1.1.2.1'],['2.1.1.2.1.1','2.1.1.2.1.1'],['2.1.1.2.1.1.1','2.1.1.2.1.1.1'],['2.1.1.2.1.2','2.1.1.2.1.2'],['2.1.1.2.1.2.1','2.1.1.2.1.2.1'],['2.1.1.2.1.2.1.1','2.1.1.2.1.2.1.1'],['2.1.1.2.1.2.1.1.1','2.1.1.2.1.2.1.1.1'],['2.1.1.2.1.3','2.1.1.2.1.3'],['2.1.1.2.1.3.1','2.1.1.2.1.3.1'],['2.1.1.2.1.3.1.1','2.1.1.2.1.3.1.1'],['3','docs'],['3.1','3.1'],['3.1.1','3.1.1'],['3.1.2','3.1.2'],['3.1.3','3.1.3'],['3.1.4','3.1.4'],['3.1.5','3.1.5'],['3.2','3.2'],['3.2.1','3.2.1'],['3.2.2','3.2.2'],['3.2.3','3.2.3'],['3.3','3.3'],['3.3.1','3.3.1'],['3.3.2','3.3.2'],['3.3.3','3.3.3'],['4','statute'],['4.1','4.1'],['4.2','4.2'],['5','jury'],['5.1','5.1'],['5.2','5.2'],['5.3','5.3'],['5.4','5.4'],['5.5','5.5'],['5.6','5.6'],['5.7','5.7'],['5.8','5.8'],['5.9','5.9'],['5.10','5.10'],['5.11','5.11'],['5.12','5.12'],['5.13','5.13'],['6','case'],['6.1','6.1'],['6.2','6.2'],['6.3','6.3'],['6.4','6.4'],['7','contact'],['7.1','7.1'],['7.1.1','7.1.1'],['7.1.2','7.1.2'],['7.1.3','7.1.3'],['7.2','7.2'],['7.2.1','7.2.1'],['7.2.1.1','7.2.1.1'],['7.2.2','7.2.2'],['7.2.2.1','7.2.2.1'],['7.2.3','7.2.3'],['7.2.3.1','7.2.3.1'],['7.2.4','7.2.4'],['7.2.4.1','7.2.4.1'],['7.3','7.3'],['7.3.1','7.3.1'],['7.4','7.4'],['7.4.1','7.4.1'],['7.4.1.1','7.4.1.1'],['7.4.2','7.4.2'],['7.4.2.1','7.4.2.1'],['7.4.3','7.4.3'],['7.4.3.1','7.4.3.1'],['7.4.4','7.4.4'],['7.4.4.1','7.4.4.1'],['7.4.5','7.4.5'],['7.4.5.1','7.4.5.1'],['7.5','7.5'],['7.5.1','7.5.1'],['7.5.1.1','7.5.1.1'],['7.5.2','7.5.2'],['7.5.2.1','7.5.2.1'],['7.5.2.1.1','7.5.2.1.1'],['7.5.2.2','7.5.2.2'],['7.5.2.2.1','7.5.2.2.1'],['7.5.2.3','7.5.2.3'],['7.5.2.3.1','7.5.2.3.1'],['7.5.2.4','7.5.2.4'],['7.5.2.4.1','7.5.2.4.1']];
+</script>
+</textarea><textarea id="transcript" name="transcript" style="display:none;" disabled="disabled"></textarea><div style="float:left;width:100%;margin:15px 0 0px 0;border-top: solid 1px #ddd;"><div id=credits class=credits style="display:none;"><div class=credit_text></div></div><p align=center> <a href="https://www.qnamarkup.org/" target=_top>code your own</a></p></div></FORM></div></div>
+<script type="text/javascript">
+	var QNum = 0;
+	var Qhtml = "";
+	var Dhtml = "";
+	var label = "";
+	var GOTOfired = 0;
+	var path = [];
+	var doc_bin = [];
+	var convo_bin = [];
+	var freetext = 0;
+	var goingback = 0;
+
+	$("#conversation input").on("keypress", 'form', function (e) {
+    	var code = e.keyCode || e.which;
+    	if (code == 13) {
+        	e.preventDefault();
+        	return false;
+    	}
+	});
+
+	function answerQ(lb,restart) {
+		currentQ = label;
+		label = lb;
+		Dhtml = 'D-'+label;
+		Qhtml = 'Q-'+label;
+		var Ahtml = 'A-'+label;
+		var Jhtml = 'J-'+QNum;
+		var Xhtml = 'X-'+label;
+		var Xihtml = 'Xi-'+label;
+		
+		var input_error = 0;
+		if (restart == undefined) {
+			var regexp = new RegExp("\<variable\>");
+			//if (document.getElementById(Xihtml)) {
+			//	console.log("document.getElementById("+Xihtml+").value: "+document.getElementById(Xihtml).value);
+			//} else {
+			//	console.log("NO document.getElementById("+Xihtml+").value: ");
+			//}
+			if (document.getElementById(Ahtml).innerHTML.match(regexp)) {
+				document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/(^\s*|\s*$)/,"");
+				if (document.getElementById(Xihtml).value == "") {
+					input_error = "Your answer appears to be empty.";
+					label = currentQ;
+				} else {
+					document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/</g,"<");
+					document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/>/g,">");
+				}
+			} 
+		}
+			
+		if (input_error != 0) {
+			alert(input_error);
+			document.getElementById(Xihtml).focus();			
+		} else {
+			if (restart == undefined) {
+				document.getElementById('QandA').innerHTML += "<div id=\"break-at-"+QNum+"\" class='frame'><div class='full'><div class='ans_text'>"+document.getElementById(Ahtml).innerHTML+"</div></div><div class='ans_arrow'></div></div></div></div>";
+				// insert answer from button
+				if (document.getElementById(valueis(currentQ))) {
+					document.getElementById(valueis(currentQ)).outerHTML='';
+				}
+				if (document.getElementById(Xihtml)) {
+					document.getElementById('QandA').innerHTML = "<textarea style=\"display:none;\" id=\""+valueis(currentQ)+"\" name=\""+valueis(currentQ)+"\">"+document.getElementById(Xihtml).value+"</textarea>\n" + document.getElementById('QandA').innerHTML				
+				} else {
+					document.getElementById('QandA').innerHTML = "<textarea style=\"display:none;\" id=\""+valueis(currentQ)+"\" name=\""+valueis(currentQ)+"\">"+document.getElementById(Xhtml).innerHTML+"</textarea>\n" + document.getElementById('QandA').innerHTML
+				}
+				if (document.getElementById('QandA').innerHTML.match(regexp)) {
+				 	var duplicatevars = new RegExp("id=\""+document.getElementById(Xhtml).innerHTML+"(.)*"+document.getElementById(Xhtml).innerHTML+"\"","g");
+					document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(duplicatevars, "");
+					document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/\<variable\>(\<\/variable\>)?/, "<input type=hidden id=\""+document.getElementById(Xhtml).innerHTML+"\" name=\""+document.getElementById(Xhtml).innerHTML+"\" value=\""+document.getElementById(Xihtml).value+"\"/>"+document.getElementById(Xihtml).value);
+					//document.getElementById('transcript').value = document.getElementById('transcript').value.replace(/\<variable\>(\<\/variable\>)?/, document.getElementById(Xihtml).value+"\n");
+					var thisvariable = new RegExp("<(X|x)>"+document.getElementById(Xhtml).innerHTML+"<\/(X|x)>","g");
+					//document.getElementById('doc').innerHTML = document.getElementById('doc').innerHTML.replace(thisvariable, document.getElementById(document.getElementById(Xhtml).innerHTML).innerHTML);
+					//document.getElementById('ondeck').innerHTML = document.getElementById('ondeck').innerHTML.replace(thisvariable, document.getElementById(valueis(currentQ)).innerHTML);
+					//console.log("thisvariable: "+thisvariable);
+					//console.log("Variable name: "+valueis(currentQ));
+					//console.log("Variable value: "+document.getElementById(valueis(currentQ)).innerHTML);
+					if(document.getElementById(Ahtml).innerHTML != "") { 
+						//document.getElementById('transcript').value += "USER: "+document.getElementById(Xihtml).value+"\n"; 
+						convo_bin.push("USER: "+document.getElementById(Xihtml).value+"\n");
+					}
+				} else {
+					//document.getElementById('transcript').value += "USER: "+document.getElementById(Ahtml).innerHTML+"\n";
+					convo_bin.push("USER: "+document.getElementById(Ahtml).innerHTML+"\n");
+				}
+				document.getElementById('Choices').innerHTML = '';
+				if (goingback == 0) {
+					setTimeout(function() {renderQnA(Qhtml,Jhtml,Dhtml,restart)}, 300);
+				} else {
+					renderQnA(Qhtml,Jhtml,Dhtml,restart);
+				}
+			} else {
+				document.getElementById('Choices').innerHTML = '';
+				path = [];
+				renderQnA(Qhtml,Jhtml,Dhtml,restart);			
+			}
+
+		}
+		
+	}
+
+
+	function renderQnA(Qht,Jht,Dht,restar) {
+		Dhtml = Dht;
+					
+		GOTOfired = 0;
+		path.push(label);
+
+		swapGOTO(Qht,Jht);
+
+		console.log("After swap: "+GOTOfired);
+
+		if (GOTOfired == 0) {
+			document.getElementById('QandA').innerHTML += "<div id="+Jht+" style=\"float:left;width:100%;height:1px;\"> </div>";
+		}
+		document.getElementById('QandA').innerHTML += "<div class='frame'><div class='full'><div class='question_text'>"+swapvar(document.getElementById(Qhtml).innerHTML)+"</div></div><div class='question_arrow'></div></div>";		
+
+		document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/(\<br\>){2}/gi,"</div></div><div class='question_arrow'></div></div></div></div><div class='frame'><div class='full'><div class='question_text'>");
+		document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/(\<br\> \<br\>)/gi,"<br><br>");
+
+		// add question 
+		//document.getElementById('transcript').value += swapvar("BOT: "+ document.getElementById(Qhtml).innerHTML);
+		//document.getElementById('transcript').value = document.getElementById('transcript').value.replace(/(\<br\>){2}/gi,"\nBOT: ");
+		this_text = swapvar("BOT: "+ document.getElementById(Qhtml).innerHTML);
+		this_text = this_text.replace(/(\<br\>){2}/gi,"\nBOT: ");
+		convo_bin.push(this_text);
+				
+		// make push doc into array in doc() cycle through array and put into output
+		// maybe remove doc div
+		if (document.getElementById(Dhtml)) {
+			doc_bin.push([document.getElementById(Dhtml).innerHTML,currentQ]);
+			console.log("Add to Doc ("+Dhtml+"): "+document.getElementById(Dhtml).innerHTML);
+			//document.getElementById('doc').innerHTML += document.getElementById(Dhtml).innerHTML;
+		}
+						
+		tmp = getElementsByIdRegExp("div", "A-"+label+"(\\.{1}\\d){1}$");
+		a_href = getElementsByIdRegExp("div", "A-href-"+label+"(\\.{1}\\d){1}$");
+		a_target = getElementsByIdRegExp("div", "A-target-"+label+"(\\.{1}\\d){1}$");
+		tmp_x = getElementsByIdRegExp("div", "X-"+label+"(\\.{1}\\d){1}$");
+		var Xishere = 0;
+		for ( var i = 0; i < tmp.length; i++ ) {
+			var nextlabel = tmp[i].id.substr(2);
+			var Xihtml = 'Xi-'+nextlabel;
+			var regexp = "\<variable\>";
+			var regexp_js = "^javascript:";
+			var script_call = "";
+			if (tmp[i].innerHTML.match(regexp)) {
+				if (a_href[i].innerHTML.match('^(_blank:)?javascript:')) {
+					script_call = a_href[i].innerHTML.replace(/^(_blank:)?javascript:/gi,"");
+				} else {
+					if (a_href[i].innerHTML.match('^_blank:')) {
+						script_call = "window.open('"+a_href[i].innerHTML.replace(/^_blank:/,"")+"','_blank');";			
+					} else {
+						script_call = "location.href = '"+a_href[i].innerHTML+"';";
+					}
+				}
+				document.getElementById('Choices').innerHTML += "<div class=\"xdiv\"><input type=\""+a_target[i].innerHTML+"\" id=\""+Xihtml+"\" name=\""+Xihtml+"\" class=\"xinput\" onkeypress=\"if (event.keyCode==13){answerQ('"+nextlabel+"');"+script_call+"}\"/><a href=\"javascript:void('');\" class=\"xbutton\" onClick=\"answerQ('"+nextlabel+"');"+script_call+"\"><span class=\"qpad\">Save above text as answer.</span></a></div>";
+				Xishere = Xihtml;
+				freetext = Xihtml;
+			} else if (a_href[i].innerHTML.match(regexp_js) && a_href[i].innerHTML != "javascript:void('');") {
+				tmp[i].innerHTML = tmp[i].innerHTML.replace(/(\<br\>){2}/gi,"<br> <br>");
+				var script_call = a_href[i].innerHTML.replace(/^javascript:/gi,"");
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"qabutton\" onClick=\"answerQ('"+nextlabel+"');"+script_call+"\" "+a_target[i].innerHTML+"><span class=\"qpad\">"+tmp[i].innerHTML+"</span></a>";							
+				freetext = 0;
+			} else {
+				tmp[i].innerHTML = tmp[i].innerHTML.replace(/(\<br\>){2}/gi,"<br> <br>");
+				document.getElementById('Choices').innerHTML += "<a href=\""+a_href[i].innerHTML+"\" class=\"qabutton\" onClick=\"answerQ('"+nextlabel+"');\" "+a_target[i].innerHTML+"><span class=\"qpad\">"+tmp[i].innerHTML+"</span></a>";				
+				freetext = 0;
+			}
+		}			
+
+		if (restar == undefined) {
+			
+			document.getElementById('Choices').innerHTML += "<div class=\"standard_buttons\">";
+			if (QNum > 1) { 
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" onClick=\"goback(QNum);\">GO BACK ONE</a>";
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" style=\"float:right\" onClick=\"startAT('1');\">START OVER</a>";
+			} else if (QNum == 1) {
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" onClick=\"startAT('1');\">GO BACK ONE</a>";
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" style=\"float:right\" onClick=\"startAT('1');\">START OVER</a>";				
+			}
+			document.getElementById('Choices').innerHTML += "</div>"
+		}
+				
+		if (QNum != 0) { 
+			if (goingback == 0) {
+				scroll2Q(Jht,800);           	
+			} else {
+				window.scrollTo(0, document.getElementById(Jht).offsetTop);     		
+			}
+		} else if (restar != undefined) {
+			window.scrollTo(0,0);
+		}
+		if (Xishere != 0 && window.self == window.top) {
+			console.log("Set focus for: "+Xishere);
+			document.getElementById(Xishere).focus();
+		}
+		console.log("Q#: "+QNum);
+		console.log("New Path: "+path);
+		QNum++;
+		goingback = 0;
+					
+	}
+
+	
+	function swapGOTO(QH,JH) {
+		var regex = new RegExp("GOTO:(\d*)(\.\d+)*");
+		if (regex.test(document.getElementById(QH).innerHTML)) {
+			var Qtext = document.getElementById(QH).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/);
+			document.getElementById('QandA').innerHTML += "<div id="+JH+" style=\"float:left;width:100%;height:1px;\"> </div>";
+			// Add question
+			// note I added () around the < to avoid a < followed by a ? which causes problems in php
+			var Qtexttrans = document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"");
+			Qtexttrans = Qtexttrans.replace(/\s*$/,"");
+			if (Qtexttrans != "") {
+				//document.getElementById('transcript').value += swapvar("BOT: "+Qtexttrans+"\n");
+				convo_bin.push(swapvar("BOT: "+Qtexttrans+"\n"));
+			}
+			if (document.getElementById(QH).innerHTML.match(/^GOTO:(\d*)(.\s*\d+)*/)) {
+				document.getElementById('QandA').innerHTML += document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"<"+Qtext+">");
+			} else {
+				document.getElementById('QandA').innerHTML += "<div class='frame'><div class='full'><div class='question_text'>"+ swapvar(document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"<"+Qtext+">"))+"</div></div><div class='question_arrow'></div></div>";						
+			}
+			// replace GOTO with text
+			label = Qtext[0].replace("GOTO:","");
+			Qhtml = 'Q-'+label;
+			if (document.getElementById(Dhtml)) {
+				doc_bin.push([document.getElementById(Dhtml).innerHTML,currentQ]);
+				console.log("Add to Doc ("+Dhtml+"): "+document.getElementById(Dhtml).innerHTML);
+				//document.getElementById('doc').innerHTML += document.getElementById(Dhtml).innerHTML;
+			}
+			Dhtml = 'D-'+label;
+			GOTOfired = 1;
+			console.log("In swap: "+GOTOfired);
+			swapGOTO(Qhtml,JH);
+		}
+	}
+
+	
+	function scroll2Q(id,speed) {
+		var top = document.getElementById(id).offsetTop; //Getting Y of target element
+		console.log("Jump to Y for ("+id+"): "+top);
+		//adapted from https://github.com/Yappli/smooth-scroll
+		var moving_frequency = 5; // Affects performance !
+		var hop_count = speed/moving_frequency
+        var getScrollTopDocumentAtBegin = document.documentElement.scrollTop + document.body.scrollTop;
+        var gap = (top - getScrollTopDocumentAtBegin) / hop_count;
+		for(var i = 1; i <= hop_count; i++)
+        {
+        	(function()
+           	{
+           		var hop_top_position = gap*i;
+           	    setTimeout(function(){  window.scrollTo(0, hop_top_position + getScrollTopDocumentAtBegin); }, moving_frequency*i);
+           	 })();
+        }
+	}
+
+	function getElementsByIdIs(selectorTag, name) {
+		var items = [];
+		var myPosts = document.getElementsByTagName(selectorTag);
+			//omitting undefined null check for brevity
+			if (myPosts[0].id == name) {
+				items.push(myPosts[0]);
+			}
+		
+		return items;
+	}
+
+	function getElementsByIdRegExp(selectorTag, expression) {
+		// note you need to escape \ in the expression with \, i.e., \\ = \
+		var regex = new RegExp(expression);
+		var items = [];
+		var myPosts = document.getElementsByTagName(selectorTag);
+		for (var i = 0; i < myPosts.length; i++) {
+			if (regex.test(myPosts[i].id)) {
+				items.push(myPosts[i]);
+			}
+		}
+		
+		return items;
+	}	
+
+	// startAT QnA
+	function startAT(id) {
+		document.getElementById('ondeck').innerHTML = document.getElementById('original').value;
+		document.getElementById('QandA').innerHTML = "";
+		//document.getElementById('transcript').value = "";
+		doc_bin = [];
+		convo_bin = [];
+		QNum = 0;
+		answerQ(id,'1');
+	}
+		
+	//show funtion
+	function show(id) { 
+   		if (document.getElementById) { // DOM3 = IE5, NS6
+        	document.getElementById(id).style.display = 'block';
+    	} else { 
+        	if (document.layers) {  
+            	document.id.display = 'block';
+        	} else {
+                document.all.id.style.display = 'block';
+        	}
+    	}
+	}
+
+	//hide funtion
+	function hide(id) { 
+    	if (document.getElementById) { // DOM3 = IE5, NS6
+        	document.getElementById(id).style.display = 'none';         
+    	} else { 
+        	if (document.layers) {  
+                document.id.display = 'none';
+        	} else {
+                document.all.id.style.display = 'none';
+        	}
+    	}
+	}
+
+	//show OR hide funtion depends on if element is shown or hidden
+	function shoh(id) { 
+    	if (document.getElementById) { // DOM3 = IE5, NS6
+        	if (document.getElementById(id).style.display == "none"){
+            	document.getElementById(id).style.display = 'block';
+        	} else {
+            	document.getElementById(id).style.display = 'none';         
+        	}   
+    	} else { 
+        	if (document.layers) {  
+            	if (document.id.display == "none"){
+                	document.id.display = 'block';
+            	} else {
+                	document.id.display = 'none';
+            	}
+        	} else {
+            	if (document.all.id.style.visibility == "none"){
+                	document.all.id.style.display = 'block';
+            	} else {
+                	document.all.id.style.display = 'none';
+            	}
+        	}
+    	}
+	}
+	
+	function swapvar(input) {
+		var output; 
+		for(var i = 0; i < QVnames.length; i++) {
+			if (document.getElementById(QVnames[i][1])) {
+				var item = QVnames[i][1].replace(/\./g,"\\.");
+				var varegx = new RegExp("<x>"+item+"<\/x>","gi");
+				//console.log(QVnames[i][1]);
+				input = input.replace(varegx,document.getElementById(QVnames[i][1]).innerHTML);
+			} 
+		}
+		output = input
+		return output
+	}
+	
+	function docforindex(indexID) {
+		for(var i = 0; i < doc_bin.length; i++) {
+			if(doc_bin[i][1] == indexID) {
+				return true;
+			}
+		}
+	}
+	function indexis(variablename) {
+		for(var i = 0; i < QVnames.length; i++) {
+			if(QVnames[i][1] == variablename) {
+				return QVnames[i][0];
+			}
+		}
+	}
+	function valueis(variablekey) {
+		for(var i = 0; i < QVnames.length; i++) {
+			if(QVnames[i][0] == variablekey) {
+				return QVnames[i][1];
+			}
+		}
+	}
+	
+	function look4goto(qn,id) {
+		console.log("GOTO SEARCH: "+id);
+		var qID = "Q-"+id;
+		// If there's a doc in the XXXXXXXXXXXXXXXX, remove it.
+		if (docforindex(path.indexOf(id))) {
+			console.log("DOC FOUND "+id);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		convo_bin.splice(-2,2);
+		var re = new RegExp("GOTO:(([a-z0-9\._-]*)\s*)$","gi");
+		if (document.getElementById(qID).innerHTML.match(re)) {
+			convo_bin.splice(-1,1);
+			console.log("GOTO FOUND: "+id);
+			textinput = re.exec(document.getElementById(qID).innerHTML)[2]+"";
+			if (docforindex(indexis(textinput))) {
+				document.getElementById("Xi-"+path[qn]).value = document.getElementById(valueis(textinput)).innerHTML;
+				console.log("DOC FOUND "+textinput);
+				doc_bin.splice(doc_bin.length-1,1);
+			}
+			look4goto(qn,textinput);
+		}
+	}
+	
+	function goback(qn) {
+		Qlast = qn - 3
+		qn = qn - 2;
+		label = path[qn];
+		goingback = 1;
+		
+		console.log("GO BACK TO:"+qn);
+		var re = new RegExp('(((^|\\n).*)*)<div id="break-at-'+qn+'" class="frame">((.*)(\\W.*))*', 'g');
+		document.getElementById("QandA").innerHTML = document.getElementById("QandA").innerHTML.replace(re, '$1');
+		document.getElementById('Choices').innerHTML += "<input type=\"hidden\" id=\"Xi-"+path[qn]+"\" name=\"Xi-"+path[qn]+"\" value=\"\">";
+			console.log("####################: "+path[path.length-1]);
+		
+		//look4goto(qn,path[path.length-1]);
+		
+		path.splice(-1,1);
+		convo_bin.splice(-4,4);
+		//convo_bin.splice(-2,2);
+
+		// If there's a doc in the last Q that you're removing, hold on to it.
+		// And put it back after you've removed it. When you rerender the Q.
+		if (document.getElementById("X-"+path[qn]) && document.getElementById(valueis(path[Qlast]))) {
+			document.getElementById("Xi-"+path[qn]).value = document.getElementById(valueis(path[Qlast])).innerHTML;
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		
+		// If there's a doc in the current Q, remove it.
+		if (docforindex(currentQ)) {
+			console.log("DOC FOUND (current) "+currentQ);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		// If there's a doc in the queued up Q, remove it. 
+		if (document.getElementById(Dhtml)) {
+			console.log("DOC FOUND (ondeck)"+Dhtml);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		
+		look4goto(qn,path[path.length-1]);
+		
+		if (freetext != 0) {
+			document.getElementById(freetext).value = "";
+		}
+		QNum = qn;
+		loadQ = path[path.length-1];
+		path.splice(-1,1);
+		
+		console.log("Reload ans for: "+loadQ);
+		answerQ(loadQ);
+	}
+
+	function transcript(output) {
+		var convo_output = "";
+		for (var i = 0, len = convo_bin.length; i < len; i++) {
+			convo_output += convo_bin[i];
+		}
+		if (output == 1) {
+			return convo_output;
+		} else {
+			return convo_output.replace(/<[^>]*>/g,"");
+		}
+	}		
+	
+	function doc() {
+		var doc_output = ""; 
+		for (var i = 0, len = doc_bin.length; i < len; i++) {
+			doc_output += doc_bin[i][0];
+		}
+		return swapvar(doc_output);
+	}	
+	
+	function json_str() {
+		
+		var json_list = "{";
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				if (document.getElementById(QVnames[i][1])) {
+					json_list = json_list+'"'+QVnames[i][1]+'":"'+document.getElementById(QVnames[i][1]).innerHTML+'"';
+				} else {
+					json_list = json_list+'"'+QVnames[i][1]+'":"'+'"';
+				}
+				json_list = json_list+",";
+			} 
+			if (i+1 == QVnames.length) {
+				json_list = json_list.replace(/,$/, '');
+				json_list = json_list+"}";
+			}
+		}
+		return json_list;
+	}
+
+	function mail2(to,subject,body) {
+		to = encodeURIComponent(to);
+		subject = encodeURIComponent(subject);
+		body = encodeURIComponent(body);
+		window.location.href = "mailto:"+to+"?subject="+subject+"&body="+body;
+	}
+	
+	function submit2(action,method,docAs,instructions,transcriptAs,jsonAs,target) {
+		document.FORM.action = action;
+		document.FORM.method = method;
+		if (target) {
+			document.FORM.target = target;
+		} else {
+			document.FORM.target = "_self";		
+		}
+		
+		if (docAs) {
+			if (document.getElementsByName(docAs).length == 0) { 
+				var doctext = document.createElement("textarea");
+				doctext.style.display ='none';
+				doctext.name= docAs;
+				doctext.value= doc();
+				document.getElementById('FORM').appendChild(doctext);
+			} else {
+				$('textarea[name='+docAs+']').val(json_str())
+			}
+			if (instructions) {
+				if (document.getElementsByName('i').length == 0) { 
+					var instructtext = document.createElement("textarea");
+					instructtext.type='hidden';
+					instructtext.style.display ='none';
+					instructtext.name= 'i';
+					instructtext.value= instructions;
+					document.getElementById('FORM').appendChild(instructtext);	
+				} else {
+					$('textarea[name=i]').val(json_str())
+				}
+			}
+		}
+		if (transcriptAs) {
+			if (document.getElementsByName(transcriptAs).length == 0) { 
+				var ttext = document.createElement("textarea");
+				ttext.type='hidden';
+				ttext.style.display ='none';
+				ttext.name= transcriptAs;
+				ttext.value= transcript();
+				document.getElementById('FORM').appendChild(ttext);
+			} else {
+				$('textarea[name='+transcriptAs+']').val(json_str())
+			}
+		}
+		if (jsonAs) {
+			if (document.getElementsByName(jsonAs).length == 0) { 
+				var json = document.createElement("textarea");
+				json.type='hidden';
+				json.style.display ='none';
+				json.name= jsonAs;			
+				json.value= json_str();
+				document.getElementById('FORM').appendChild(json);
+			} else {
+				$('textarea[name='+jsonAs+']').val(json_str())
+			}
+		}
+		var ondeckdiv = document.getElementById('ondeck').innerHTML;
+		var rawmarkupdiv = document.getElementById('rawmarkup').innerHTML;
+		document.getElementById('ondeck').innerHTML = "";
+		document.getElementById('rawmarkup').innerHTML = "";
+		document.FORM.submit();
+		document.getElementById('ondeck').innerHTML = ondeckdiv;
+		document.getElementById('rawmarkup').innerHTML = rawmarkupdiv;
+	}
+	
+	function csv() {
+		var csv_list = "";
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				csv_list = csv_list+'"'+QVnames[i][1]+'"';
+				csv_list = csv_list+",";
+			} 
+			if (i+1 == QVnames.length) {
+				csv_list = csv_list.replace(/,$/, '');
+				csv_list = csv_list+"\n";
+			}
+		}
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				if (document.getElementById(QVnames[i][1])) {
+					csv_list = csv_list+'"'+document.getElementById(QVnames[i][1]).innerHTML+'"';
+				} else {
+					csv_list = csv_list+'""';
+				}
+				csv_list = csv_list+",";
+			} 			
+			if (i+1 == QVnames.length) {
+				csv_list = csv_list.replace(/,$/, '');
+				csv_list = csv_list+"\n";
+			}
+		}
+
+		return csv_list;
+	}
+	
+	function getvar(val) {
+		return document.getElementById(val).value;
+	}
+
+	function goto(val) {
+	   answerQ(indexis(val));
+	}
+
+	// h/t http://runnable.com/U5HC9xtufQpsu5aj/use-javascript-to-save-textarea-as-a-txt-file
+	function save2(filename,content)
+	{
+
+	// I'm using file system support as a proxy for support for this feature. 
+	// Check based on one found at: http://blog.teamtreehouse.com/building-an-html5-text-editor-with-the-filesystem-apis
+	// Handle vendor prefixes.
+	window.requestFileSystem = window.requestFileSystem || 
+							   window.webkitRequestFileSystem;
+	// Check for support.
+	if (window.requestFileSystem) {
+	// content = ID of textarea to save
+	// name = name to save file as, including file extension     
+	// grab the content of the form field and place it into a variable
+	//    var textToWrite = document.getElementById(content).value;
+	//  create a new Blob (html5 magic) that conatins the data from your form feild
+		var textFileAsBlob = new Blob([content], {type:'text/plain'});
+		
+	// Specify the name of the file to be saved
+		var fileNamecontentAs = filename;
+		
+	// Optionally allow the user to choose a file name by providing 
+	// an imput field in the HTML and using the collected data here
+	// var fileNamecontentAs = txtFileName.text;
+
+	// create a link for our script to 'click'
+		var downloadLink = document.createElement("a");
+	//  supply the name of the file (from the var above).
+	// you could create the name here but using a var
+	// allows more flexability later.
+		downloadLink.download = fileNamecontentAs;
+	// provide text for the link. This will be hidden so you
+	// can actually use anything you want.
+		downloadLink.innerHTML = "My Hidden Link";
+		
+	// allow our code to work in webkit & Gecko based browsers
+	// without the need for a if / else block.
+		window.URL = window.URL || window.webkitURL;
+			  
+	// Create the link Object.
+		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+	// when link is clicked call a function to remove it from
+	// the DOM in case user wants to save a second file.
+		downloadLink.onclick = destroyClickedElement;
+	// make sure the link is hidden.
+		downloadLink.style.display = "none";
+	// add the link to the DOM
+		document.body.appendChild(downloadLink);
+		
+	// click the new link
+		downloadLink.click();
+	} else {
+		alert('This feature is not supported by your browser.');
+	}
+		
+	}
+
+	function destroyClickedElement(event)
+	{
+	// remove the link from the DOM
+		document.body.removeChild(event.target);
+	}
+
+	// EOF
+
+</script>
+</BODY>
+</HTML>
